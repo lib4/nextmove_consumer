@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView    android:layout_width="fill_parent"
+    android:layout_height="match_parent" 
+     android:background="@color/pane_background_color"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical" >
+
+            
+    <!-- DIVE IN BEGINS-->
+
+    <TextView
+        style="@style/SubTitleHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/DiveIn" />
+
+    <LinearLayout
+        android:id="@+id/topusers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/selector"
+        android:clickable="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/list_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/transparent_selector"
+            android:text="@string/TopUsers" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/newusers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/selector"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/list_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/transparent_selector"
+            android:text="@string/NewUsers" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/onlineusers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/selector"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/list_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/transparent_selector"
+            android:text="@string/OnlineUsers" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/memberlookup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/selector"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/list_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/transparent_selector"
+            android:text="@string/MemberLookUp" />
+    </LinearLayout>
+
+     <!-- DIVE IN CLOSE-->
+    
+    
+    <!-- ME  BEGINS-->
+
+    <TextView
+        style="@style/SubTitleHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/ME" />
+
+    <LinearLayout
+        android:id="@+id/my_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/selector"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/list_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/transparent_selector"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:text="@string/MyProfile" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/photos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/selector"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/list_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/transparent_selector"
+            android:text="@string/Photos" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/friends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/selector"
+        android:clickable="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/list_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/transparent_selector"
+            android:text="@string/Friends" />
+    </LinearLayout>
+
+    
+    
+        <LinearLayout
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/selector"
+        android:clickable="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/list_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/transparent_selector"
+            android:text="@string/Logout" />
+    </LinearLayout>
+    <!-- ME  CLOSE -->
+
+</LinearLayout>
+</ScrollView>

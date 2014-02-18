@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >  
+  
+    <item  
+        android:id="@+id/view_tile"  
+        android:title="@string/ViewAsTile"/>  
+      
+    <item  
+        android:id="@+id/view_list"  
+        android:title="@string/ViewAsList"/>  
+        
+   
+          
+</menu>  

@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/white_tile_background_color"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/profile_pic"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:adjustViewBounds="false"
+        android:src="@drawable/user1"
+        android:background="@drawable/default_profile_pic"
+        android:scaleType="fitXY" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/background"
+            style="@style/blue_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:text="Background"
+          
+            android:textSize="15sp" >
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1.0" >
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                 android:textStyle="bold"
+                android:gravity="left"
+                android:text="Martial Status"
+                android:textSize="15sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                android:text="Single"
+                android:textSize="15sp" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1.0" >
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                 android:textStyle="bold"
+                android:text="Children"
+                android:textSize="15sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                android:text="0"
+                android:textSize="15sp" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1.0" >
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                 android:textStyle="bold"
+                android:text="Looking for"
+                android:textSize="15sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                android:text="Friends,Marriage,LongTerm"
+                android:textSize="15sp" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1.0" >
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                 android:textStyle="bold"
+                android:gravity="left"
+                android:text="Education"
+                android:textSize="15sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                
+                android:gravity="left"
+                android:text="High School"
+                android:textSize="15sp" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1.0" >
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                android:text="Occupation"
+                android:textStyle="bold"
+                android:textSize="15sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                android:text="Student"
+                android:textSize="15sp" >
+            </TextView>
+        </LinearLayout>
+
+        <!--  -->
+
+        <TextView
+            android:id="@+id/background"
+            style="@style/blue_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:text="Description"
+            android:textSize="15sp" >
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1.0" >
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                 android:textStyle="bold"
+                android:gravity="left"
+                android:text="Hair Color"
+                android:textSize="15sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                android:text="Black"
+                android:textSize="15sp" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1.0" >
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                 android:textStyle="bold"
+                android:text="Eyes Color"
+                android:textSize="15sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                android:text="Black"
+                android:textSize="15sp" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1.0" >
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                 android:textStyle="bold"
+                android:gravity="left"
+                android:text="Weight"
+                android:textSize="15sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                android:text="59kg"
+                android:textSize="15sp" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1.0" >
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                 android:textStyle="bold"
+                android:layout_weight=".5"
+                android:gravity="left"
+                android:text="Body Type"
+                android:textSize="15sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                android:text="Average"
+                android:textSize="15sp" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1.0" >
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 android:textStyle="bold"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                android:text="Body Hair"
+                android:textSize="15sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                android:text="Smooth"
+                android:textSize="15sp" >
+            </TextView>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/background"
+            style="@style/blue_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+             android:textStyle="bold"
+            android:gravity="left"
+            android:text="Lifestyle"
+            android:textSize="15sp" >
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1.0" >
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                 android:textStyle="bold"
+                android:text="In my spare time I love to"
+                android:textSize="15sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                android:text="TOUR, DANCING, SWIMMING, HANG AROUND WITH LOVE ONE&apos;S"
+                android:textSize="15sp" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1.0" >
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                 android:textStyle="bold"
+                android:text="Bad habbits"
+                android:textSize="15sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                android:text="none"
+                android:textSize="15sp" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1.0" >
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                 android:textStyle="bold"
+                android:layout_weight=".5"
+                android:gravity="left"
+                android:text="My interests"
+                android:textSize="15sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/SubTitleHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight=".5"
+                android:gravity="left"
+                android:text="Computers, Business, Art/Culture, Cars, Entertainment, Celebrities, Sports, Fashion"
+                android:textSize="15sp" >
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
