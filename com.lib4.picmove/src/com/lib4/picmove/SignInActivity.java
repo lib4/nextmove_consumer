@@ -41,7 +41,7 @@ public class SignInActivity extends Activity{
 		// Replace whatever is in the fragment_container view with this
 		// fragment,
 		// and add the transaction to the back stack
-		fragmentTransaction.replace(R.id.fragment_holder, mSignInFragment,ChatFragment.class.getName());
+		fragmentTransaction.replace(R.id.fragment_holder, mSignInFragment,SignInFragment.class.getName());
 
 		// Commit the transaction
 		fragmentTransaction.commit();

@@ -2,24 +2,28 @@ package com.lib4.picmove.fragments;
 
 import java.util.Random;
 
-import com.lib4.customviews.CustomParentView;
-import com.lib4.customviews.IndicatorView;
-import com.lib4.picmove.R;
-
-
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.GestureDetector.SimpleOnGestureListener;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import com.lib4.customviews.CustomParentView;
+import com.lib4.customviews.IndicatorView;
+import com.lib4.picmove.R;
+import com.lib4.picmove.SignInActivity;
+import com.lib4.picmove.SplashActivity;
 
 public class TutorialFragment extends Fragment {
 
@@ -34,6 +38,8 @@ public class TutorialFragment extends Fragment {
 	IndicatorView	mIndicatorView;
 	 private int CURRENT_SCREEN;
 	 private int TOTAL_NUM_SCREENS	=	3;
+	 
+	 private Button gotItButton;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,6 +67,11 @@ public class TutorialFragment extends Fragment {
 			R.drawable.tutorial_bullets_bg, R.drawable.tutorial_number_inactive);
 		mIndicatorView.setNumberofScreens(TOTAL_NUM_SCREENS);
 		mIndicatorView.switchToScreen(CURRENT_SCREEN, CURRENT_SCREEN);
+		
+		
+		gotItButton	=	( Button)mRelativeLayout.findViewById(R.id.gotit_btn);
+		gotItButton.setOnClickListener(gotiItBtnClick);
+		
 		return mRelativeLayout;
 	}
 
@@ -83,6 +94,22 @@ public class TutorialFragment extends Fragment {
 					Toast.LENGTH_SHORT).show();
 		}
 	}
+	
+	private OnClickListener gotiItBtnClick	= new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			
+			// Calling the next Activity.
+			Intent intent = new Intent(getActivity(), SignInActivity.class);
+			startActivity(intent);
+			getActivity().finish();
+		}
+	};	
+	
+	
+	
+	
 
 	/**
 	 * 
