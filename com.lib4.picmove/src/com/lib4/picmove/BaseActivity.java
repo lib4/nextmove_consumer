@@ -213,7 +213,7 @@ public class BaseActivity extends Activity implements
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		Log.e("MENU>>>>>>>>>>", "MENU>>>>>>>>>>>>>>>>>>>>>>>>>");
+		
 		searchMenuItem = menu;
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.search_menu, menu);
@@ -228,7 +228,7 @@ public class BaseActivity extends Activity implements
 
 	public void showSearchActionItem() {
 		if (searchMenuItem != null) {
-			Log.e("text", "test" + searchMenuItem.findItem(R.id.action_search));
+			
 			searchMenuItem.findItem(R.id.action_search).setVisible(true);
 			searchMenuItem.findItem(R.id.actions).setVisible(true);
 		}
