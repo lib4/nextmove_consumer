@@ -65,7 +65,7 @@ public class GetMyMovesParser {
 				}
 				if (HttpConstants.PROFILE_JKEY.equals(token)) {
 					Log.e("SignIn Response Profile "," "+token);
-					profileParser(jsonParser);
+					//profileParser(jsonParser);
 				}
 
 			}
@@ -107,14 +107,7 @@ public class GetMyMovesParser {
 					values.put(AppSqliteHelper.COLUMN_LARGEBOX_COUNT,
 							jsonParser.getIntValue());
 				}
-				if (HttpConstants.MEDIUMBOX_COUNT_JKEY.equals(token)) {
-
-					// get the next token which will be the value...
-					jsonParser.nextToken();
-					values.put(AppSqliteHelper.COLUMN_EMAIL,
-							jsonParser.getText());
-				}
-
+				
 				if (HttpConstants.PASSWORD_JKEY.equals(token)) {
 
 					// get the next token which will be the value...

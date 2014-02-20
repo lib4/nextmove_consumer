@@ -50,26 +50,26 @@ public class HttpConstants {
 	public static final String REJECT_REASON_JKEY	=	"rejectReason";
 	
 	
-	
-	public static final String DISPATCH_DATE_JKEY	=	"dispatchDate";
-	public static final String BIGITEMPRESENT_JKEY	=	"isBigItemsPresent";
-	public static final String MOVESTATUS_JKEY	=	"moveStatus";
-	public static final String BIGITEMS_JKEY	=	"bigItems";
-	
-	public static final String DISPATCH_DATE_JKEY	=	"smallBoxCount";
-	public static final String BIGITEMPRESENT_JKEY	=	"conditions";
-	public static final String MOVESTATUS_JKEY	=	"moveId";
-	public static final String BIGITEMS_JKEY	=	"priceQuote";
-	
-	public static final String DISPATCH_DATE_JKEY	=	"destinationAddress";
-	public static final String BIGITEMPRESENT_JKEY	=	"isBigItemsPresent";
-	public static final String MOVESTATUS_JKEY	=	"userId";
-	public static final String BIGITEMS_JKEY	=	"userId";
-	
-	public static final String DISPATCH_DATE_JKEY	=	"userId";
-	public static final String BIGITEMPRESENT_JKEY	=	"userId";
-
-	
+//	
+//	public static final String DISPATCH_DATE_JKEY	=	"dispatchDate";
+//	public static final String BIGITEMPRESENT_JKEY	=	"isBigItemsPresent";
+//	public static final String MOVESTATUS_JKEY	=	"moveStatus";
+//	public static final String BIGITEMS_JKEY	=	"bigItems";
+//	
+//	public static final String DISPATCH_DATE_JKEY	=	"smallBoxCount";
+//	public static final String BIGITEMPRESENT_JKEY	=	"conditions";
+//	public static final String MOVESTATUS_JKEY	=	"moveId";
+//	public static final String BIGITEMS_JKEY	=	"priceQuote";
+//	
+//	public static final String DISPATCH_DATE_JKEY	=	"destinationAddress";
+//	public static final String BIGITEMPRESENT_JKEY	=	"isBigItemsPresent";
+//	public static final String MOVESTATUS_JKEY	=	"userId";
+//	public static final String BIGITEMS_JKEY	=	"userId";
+//	
+//	public static final String DISPATCH_DATE_JKEY	=	"userId";
+//	public static final String BIGITEMPRESENT_JKEY	=	"userId";
+//
+//	
 	
 	
 	
