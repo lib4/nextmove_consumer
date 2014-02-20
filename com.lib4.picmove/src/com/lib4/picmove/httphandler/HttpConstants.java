@@ -7,59 +7,83 @@ public class HttpConstants {
 	/*
 	 * ############################## SIGN IN REQUEST PARAMS/JSON KEYS
 	 */
-	public static final String EMAIL_JKEY = "email";
 	public static final String PASSWORD_JKEY = "password";
-	public static final String TYPE_JKEY = "type";
+	public static final String TYPE_JKEY = "consumer";
+	
+	public static final String SUCCESS_JKEY = "success";
 
 	/*
 	 * ############################## SIGN IN RESPONSE JSON KEYS
 	 */
-	public static final String ACCESS_TOKEN_JKEY = "accessToken";
-	public static final String V_JKEY = "__v";
-	public static final String _ID_JKEY = "_id";
-	public static final String BUSINESS_JKEY = "business";
-	public static final String CREATED_JKEY = "created";
-	public static final String lNAME_JKEY = "lname";
-	public static final String FNAME_JKEY = "fname";
-	public static final String LASTUPDATED_JKEY = "lastUpdated";
-	public static final String PHONE_JKEY = "phone";
-	public static final String BACKGROUND_SCAN_JKEY = "backgroundScan";
-	public static final String GUEST_JKEY = "guest";
-	public static final String FULLNAME_JKEY = "fullname";
-	public static final String ID_JKEY = "id";
+	public static final String EMAILADDRES = "emailAddress";
+	public static final String PASSWORD = "password";
+	public static final String SIGNIN_REQUEST_KEY = "signInRequest";
 
 	/*
-	 * ########################### LIVEORDER RESPONSE JSON KEYS
+	 * ########################### PROFILE RESPONSE JSON KEYS
 	 */
 
-	public static final String AMOUNT_JKEY = "amount";
-	public static final String TAX_JKEY = "tax";
-	public static final String CONSUMER_JKEY = "consumer";
-	public static final String DEVICE_JKEY = "device";
-	public static final String RATED_JKEY = "rated";
-	public static final String FEE_COLLECTED_JKEY = "feeCollected";
+	public static final String MESSAGE_JKEY = "message";
 	public static final String STATUS_JKEY = "status";
-	public static final String ITEMS_JKEY = "items";
-	public static final String PRICE_JKEY = "price";
-	public static final String QTY_JKEY = "1";
-	public static final String IMAGE_JKEY = "image";
-	public static final String THUMBNAIL_JKEY = "thumbnail";
+	public static final String PROFILE_JKEY = "Profile";
+	public static final String USERID_JKEY = "userId";
+	public static final String EMAILADDRESS_JKEY = "emailAddress";
+	public static final String ADDRESS_JKEY = "address";
+	public static final String PHONENUMBER_JKEY = "phoneNumber";
+	public static final String EMAILVERIFIED_JKEY = "isEmailVerified";
+	public static final String PHONEVERIFIED_JKEY = "isPhoneVerified";
 	public static final String NAME_JKEY = "name";
 
-	public static final String CHOICES_JKEY = "choices";
-
+	
+	
 	/*
-	 * ################################# GET MENU PARSER
+	 * ####################  GET MY MOVES RESPONSE JSON KEYS
+	 * 
 	 */
-	public static final String CARDS_JKEY = "cards";
-	public static final String CHOICE_GROUPS_JKEY = "choiceGroups";
-	public static final String PAYMENTS_ENABLED_JKEY = "paymentsEnabled";
-	public static final String SUBGROUPS_JKEY = "subgroups";
-	public static final String GROUPS_JKEY = "groups";
-	public static final String SENSOR_ADV_ID_JKEY = "sensorAdvID";
-	public static final String DESCRIPTION_JKEY = "description";
-	public static final String PRICE_STRING_JKEY = "priceString";
-	public static final String TEXT_JKEY = "text";
+	public static final String GETMYMOVES_REQUEST_KEY = "getMyMoveRequest";
+	public static final String MOVES_STATUS_KEY = "moveStatus";
+	
+	
+	
+	public static final String RESPONSE_JKEY		=	"response";
+	public static final String LARGEBOX_COUNT_JKEY	=	"largeBoxCount";
+	public static final String REJECT_REASON_JKEY	=	"rejectReason";
+	
+	
+	
+	public static final String DISPATCH_DATE_JKEY	=	"dispatchDate";
+	public static final String BIGITEMPRESENT_JKEY	=	"isBigItemsPresent";
+	public static final String MOVESTATUS_JKEY	=	"moveStatus";
+	public static final String BIGITEMS_JKEY	=	"bigItems";
+	
+	public static final String DISPATCH_DATE_JKEY	=	"smallBoxCount";
+	public static final String BIGITEMPRESENT_JKEY	=	"conditions";
+	public static final String MOVESTATUS_JKEY	=	"moveId";
+	public static final String BIGITEMS_JKEY	=	"priceQuote";
+	
+	public static final String DISPATCH_DATE_JKEY	=	"destinationAddress";
+	public static final String BIGITEMPRESENT_JKEY	=	"isBigItemsPresent";
+	public static final String MOVESTATUS_JKEY	=	"userId";
+	public static final String BIGITEMS_JKEY	=	"userId";
+	
+	public static final String DISPATCH_DATE_JKEY	=	"userId";
+	public static final String BIGITEMPRESENT_JKEY	=	"userId";
+
+	
+	
+	
+	
+	public static final String ITEMNAME_JKEY	=	"itemName";
+	public static final String ITEM_DESCRIPTION_JKEY	=	"itemDescription";
+	public static final String MOVEID_JKEY	=	"moveId";
+	public static final String BIGITEM_ID_JKEY	=	"bigItemId";
+	public static final String REQUIRES_DISASSEMBLY_JKEY	=	"requiresDisassembly";
+	public static final String DOES_FITIN_ELEVATOR_JKEY	=	"doesFitInElevator";
+	public static final String ITEM_URL_JKEY	=	"itemUrl";
+	
+	
+	
+	
 	
 	
 	

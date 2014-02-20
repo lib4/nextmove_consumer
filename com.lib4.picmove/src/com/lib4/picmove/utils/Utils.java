@@ -19,8 +19,8 @@ public class Utils {
 	public static String  	TOP_USERS_HEADER =	"Top Users";	
 	public static String  	ONLINE_USERS_HEADER =	"Online Users";	
 	public static boolean TILE_VIEW_PREFERENCE		=	true;
-	public static String USERNAME = "admin";
-	public static String PASSWORD = "password";
+	public static String USERNAME = "anaschaky@gmail.com";
+	public static String PASSWORD = "12345678";
 	
 	
 	public static boolean isTabletDevice(Context activityContext) {

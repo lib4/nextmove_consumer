@@ -19,24 +19,26 @@ import android.net.NetworkInfo;
 
 public class HttpHandler extends Thread {
 
-	public static String BASE_URL = "https://airoffers.herokuapp.com";
-	public static String SIGN_IN_URL = BASE_URL + "/account/signin";
-	public static String LIVE_ORDER_URL = BASE_URL + "/live/orders";
-	public static String LIVE_ORDER_ACKNOWLEDGE_URL = "acknowledge";
-	public static String LIVE_ORDER_CONFIRM_URL = "confirm";
-	public static String LIVE_ORDER_CANCEL_URL = "cancel";
-
-	public static String GET_MENUS = BASE_URL + "/catalogs";
-	public static String LOGUT_URL = BASE_URL + "/account/signout";
+	public static String BASE_URL = "http://10.76.72.16:8080/NextMove-war";
+	public static String SIGN_IN_URL = BASE_URL + "/doSignIn";
+	public static String SIGN_UP_URL = BASE_URL + "/doSignUp";
+	public static String GET_MYMOVES_URL = BASE_URL + "/getMyMoves";
+	
+	public static String CREATE_MOVE_URL = "/doMove";
+	public static String ACC_REJ_MOVE_URL = "/doAccRejMoveDeal";
+	public static String UPDATE_PROFILE = "/updateProfile";
+	public static String LOGUT_URL = BASE_URL + "/account/signOut";
 
 	public static final String HTTP_POST = "POST";
 	public static final String HTTP_GET = "GET";
 	private int REQUEST_API_CODE = 0;
 	final int SIGNIN_API_CODE = 1;
-	final int LIVE_ORDER_API_CODE = SIGNIN_API_CODE + 1;
-	final int GET_MENUS_API_CODE = LIVE_ORDER_API_CODE + 1;
-	final int GET_LIVE_ORDER_ACTION_API_CODE = GET_MENUS_API_CODE + 1;
-	final int LOGOUT_API_CODE = GET_LIVE_ORDER_ACTION_API_CODE + 1;
+	final int SIGNUP_API_CODE = SIGNIN_API_CODE + 1;
+	final int GET_MYMOVES_API_CODE = SIGNUP_API_CODE + 1;
+	final int CREATE_MOVE_API_CODE = GET_MYMOVES_API_CODE + 1;
+	final int ACC_REJ_MOVE_API_CODE = CREATE_MOVE_API_CODE + 1;
+	final int UPDATE_PROFILE_API_CODE = ACC_REJ_MOVE_API_CODE + 1;
+	final int LOGOUT_API_CODE = UPDATE_PROFILE_API_CODE + 1;
 	public static final int NO_NETWORK_CODE = 999;
 	public static final int DEFAULT_CODE = 1;
 	String URL;
@@ -52,14 +54,24 @@ public class HttpHandler extends Thread {
 	 * Response will sent to appropriate response handled method. which in turn
 	 * stores the data in to RecordStore.
 	 */
-	public void getLiveOrders(Context context,
+	public void getMyMoves(Context context,
 			HTTPResponseListener mHttpResponseListener) {
 
-		URL = LIVE_ORDER_URL;
+		URL = GET_MYMOVES_URL;
 		this.context = context;
 		this.mHttpResponseListener = mHttpResponseListener;
-		REQUEST_API_CODE = LIVE_ORDER_API_CODE;
-		requestType = HTTP_GET;
+		
+		try {
+
+			JSONObject getMyMovesReqObject = new JSONObject();
+			getMyMovesReqObject.put(HttpConstants.USERID_JKEY, "38bdceac-1289-4b2c-95b7-9e7572c4dc6c");
+			getMyMovesReqObject.put(HttpConstants.MOVES_STATUS_KEY, "All");
+			requestBody = new JSONObject().put(HttpConstants.GETMYMOVES_REQUEST_KEY, getMyMovesReqObject).toString();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		REQUEST_API_CODE = GET_MYMOVES_API_CODE;
+		requestType = HTTP_POST;
 		start();
 	}
 
@@ -84,12 +96,11 @@ public class HttpHandler extends Thread {
 		try {
 
 			JSONObject signInReqObject = new JSONObject();
-			signInReqObject.put(HttpConstants.EMAIL_JKEY, emailAddress);
+			signInReqObject.put(HttpConstants.EMAILADDRESS_JKEY, emailAddress);
 			signInReqObject.put(HttpConstants.PASSWORD_JKEY, password);
 			Utils.USERNAME = emailAddress;
 			Utils.PASSWORD = password;
-			signInReqObject.put(HttpConstants.TYPE_JKEY, "merchant");
-			requestBody = signInReqObject.toString();
+			requestBody = new JSONObject().put(HttpConstants.SIGNIN_REQUEST_KEY, signInReqObject).toString();
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -101,41 +112,7 @@ public class HttpHandler extends Thread {
 		start();
 	}
 
-	/**
-	 * 
-	 * 
-	 * Function calls the ServerConnection gateway once the response is received
-	 * Response will sent to appropriate response handled method. which in turn
-	 * stores the data in to RecordStore.
-	 */
-	public void getMenus(Context context,
-			HTTPResponseListener mHttpResponseListener) {
 
-		URL = GET_MENUS;
-		this.context = context;
-		this.mHttpResponseListener = mHttpResponseListener;
-		REQUEST_API_CODE = GET_MENUS_API_CODE;
-		requestType = HTTP_GET;
-		start();
-	}
-
-	/**
-	 * 
-	 * 
-	 * Function calls the ServerConnection gateway once the response is received
-	 * Response will sent to appropriate response handled method. which in turn
-	 * stores the data in to RecordStore.
-	 */
-	public void liveOrderAction(Context context,
-			HTTPResponseListener mHttpResponseListener, String id, String action) {
-
-		URL = LIVE_ORDER_URL + "/" + id + "/" + action;
-		this.context = context;
-		this.mHttpResponseListener = mHttpResponseListener;
-		REQUEST_API_CODE = GET_LIVE_ORDER_ACTION_API_CODE;
-		requestType = HTTP_GET;
-		start();
-	}
 
 	/**
 	 * 
@@ -169,6 +146,7 @@ public class HttpHandler extends Thread {
 			try {
 				mConnection.connect(URL, requestBody, requestType);
 			} catch (Exception e) {
+				e.printStackTrace();
 				// Exception will be handled based on response code obtained.
 				mHttpResponseListener.onFailure(DEFAULT_CODE);
 				return;
@@ -180,6 +158,7 @@ public class HttpHandler extends Thread {
 				case 200:
 					SignInParser mSignInParser = new SignInParser(
 							mConnection.responseStream, context);
+					if(mHttpResponseListener!=null)
 					mHttpResponseListener.onSuccess();
 
 					break;
@@ -192,14 +171,27 @@ public class HttpHandler extends Thread {
 				}
 				break;
 
-			case LIVE_ORDER_API_CODE:
+			case GET_MYMOVES_API_CODE:
 				switch (mConnection.responseCode) {
 				case 200:
 
 					//LiveOrderParser mLiveOrderParser = new LiveOrderParser(
 						//	mConnection.responseStream, context);
 					//mHttpResponseListener.onSuccess();
+					InputStreamReader is = new InputStreamReader(
+							mConnection.responseStream);
+					StringBuilder sb = new StringBuilder();
+					BufferedReader br = new BufferedReader(is);
+					String read = br.readLine();
 
+					while (read != null) {
+						// System.out.println(read);
+						sb.append(read);
+						read = br.readLine();
+
+					}
+
+					System.out.println(sb.toString());
 					break;
 
 				default:
@@ -208,24 +200,8 @@ public class HttpHandler extends Thread {
 				}
 				break;
 
-			case GET_MENUS_API_CODE:
-				switch (mConnection.responseCode) {
-				case 200:
-
-					//GetMenusParser mGetMenusParser = new GetMenusParser(
-							//mConnection.responseStream, context);
-					System.out.println("Success");
-					mHttpResponseListener.onSuccess();
-
-					break;
-
-				default:
-					mHttpResponseListener.onFailure(DEFAULT_CODE);
-					break;
-				}
-				break;
-
-			case GET_LIVE_ORDER_ACTION_API_CODE:
+		
+	/*		case GET_LIVE_ORDER_ACTION_API_CODE:
 				switch (mConnection.responseCode) {
 				// case 200:
 				// String myString = IOUtils.toString(myInputStream, "UTF-8");
@@ -254,6 +230,7 @@ public class HttpHandler extends Thread {
 					break;
 				}
 				break;
+				*/
 			}
 
 		} catch (Exception e) {

@@ -15,7 +15,7 @@ import com.lib4.picmove.datastorage.AppSqliteHelper;
 import com.lib4.picmove.datastorage.DBManager;
 import com.lib4.picmove.httphandler.HttpConstants;
 
-public class SignInParser {
+public class GetMyMovesParser {
 
 	String response;
 	Context context;
@@ -24,7 +24,7 @@ public class SignInParser {
 	public String message			=	"";
 	
 
-	public SignInParser(InputStream inputStream, Context context) {
+	public GetMyMovesParser(InputStream inputStream, Context context) {
 		this.context = context;
 		parse(inputStream);
 	}
@@ -94,20 +94,20 @@ public class SignInParser {
 	 */
 
 
-	private void profileParser(JsonParser jsonParser) {
+	private void moveParser(JsonParser jsonParser) {
 
 		try {
 			while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
 				String token = jsonParser.getCurrentName();
 				Log.e("Token ","Token"+token);
-				if (HttpConstants.USERID_JKEY.equals(token)) {
+				if (HttpConstants.LARGEBOX_COUNT_JKEY.equals(token)) {
 
 					// get the next token which will be the value...
 					jsonParser.nextToken();
-					values.put(AppSqliteHelper.COLUMN_USERID,
-							jsonParser.getText());
+					values.put(AppSqliteHelper.COLUMN_LARGEBOX_COUNT,
+							jsonParser.getIntValue());
 				}
-				if (HttpConstants.EMAILADDRESS_JKEY.equals(token)) {
+				if (HttpConstants.MEDIUMBOX_COUNT_JKEY.equals(token)) {
 
 					// get the next token which will be the value...
 					jsonParser.nextToken();

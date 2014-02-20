@@ -87,7 +87,7 @@ public class DBManager {
 		String[] allColumns = { sqLiteOpenHelper.COLUMN_UID,
 				sqLiteOpenHelper.COLUMN_NAME };
 		Cursor cursor = appSqLiteDatabase.query(AppSqliteHelper.TABLE_PROFILE,
-				allColumns, null, null, null, null, null);
+				null, null, null, null, null, null);
 		Log.e("Curson Size ", "== " + cursor.getCount());
 		return cursor;
 	}

@@ -3,6 +3,7 @@ package com.lib4.picmove.network;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
@@ -27,8 +28,8 @@ public class Connection {
 		URL obj = new URL(url);
 		// Trusting all the Https server and certificate. This is insecure
 		// should be avoided.
-		trustAllHosts();
-		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+		//trustAllHosts();
+		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		System.out.println("\nSending 'POST' request to URL : " + url);
 		System.out.println("Post body : " + requestBody);
 
@@ -37,7 +38,7 @@ public class Connection {
 		// con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 
 		con.setRequestProperty("Content-Type", "application/json");
-		con.setRequestProperty("Accept", "application/json");
+//		con.setRequestProperty("Accept", "application/json");
 //		if (Utils.TOKEN != null) {
 //			System.out.println(" base64EncodedCredentials : " + Utils.TOKEN);
 //			con.setRequestProperty("Authorization", "Bearer " + Utils.TOKEN);
@@ -49,9 +50,9 @@ public class Connection {
 			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
 			// Based on request type. Request body will get attached to the http
 			// request.
-
+			System.out.println("Post body :requestBody  " + requestBody);
 			wr.writeBytes(requestBody);
-
+			
 			wr.flush();
 			wr.close();
 		}

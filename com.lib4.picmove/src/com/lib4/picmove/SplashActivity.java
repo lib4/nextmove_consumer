@@ -1,5 +1,7 @@
 package com.lib4.picmove;
 
+import com.lib4.picmove.datastorage.DBManager;
+import com.lib4.picmove.httphandler.HttpHandler;
 import com.lib4.picmove.utils.Utils;
 
 import android.app.Activity;
@@ -18,7 +20,34 @@ public class SplashActivity extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//getActionBar().hide();
+		getActionBar().hide();
+		
+		/**
+		 *DB Creation
+		 */
+		new DBManager(this).open();
+		new DBManager(this).close();
+		
+		
+		
+		
+		
+		
+		/**
+		 * 
+		 * Do All Api 
+		 */
+		
+		HttpHandler mSignInHandler	=	new HttpHandler();
+		mSignInHandler.doSignIn("anaschaky@gmail.com", "12345678", this, null);
+		
+		HttpHandler getMyMoves	=	new HttpHandler();
+		getMyMoves.getMyMoves(this, null);
+		
+		
+		
+		
+		
 		Utils.IS_TABLET	=	false;
 		
 		if(!Utils.IS_TABLET	){
