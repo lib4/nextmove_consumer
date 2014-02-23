@@ -50,26 +50,33 @@ public class HttpConstants {
 	public static final String REJECT_REASON_JKEY	=	"rejectReason";
 	
 	
-//	
-//	public static final String DISPATCH_DATE_JKEY	=	"dispatchDate";
-//	public static final String BIGITEMPRESENT_JKEY	=	"isBigItemsPresent";
-//	public static final String MOVESTATUS_JKEY	=	"moveStatus";
-//	public static final String BIGITEMS_JKEY	=	"bigItems";
-//	
-//	public static final String DISPATCH_DATE_JKEY	=	"smallBoxCount";
-//	public static final String BIGITEMPRESENT_JKEY	=	"conditions";
-//	public static final String MOVESTATUS_JKEY	=	"moveId";
-//	public static final String BIGITEMS_JKEY	=	"priceQuote";
-//	
-//	public static final String DISPATCH_DATE_JKEY	=	"destinationAddress";
-//	public static final String BIGITEMPRESENT_JKEY	=	"isBigItemsPresent";
-//	public static final String MOVESTATUS_JKEY	=	"userId";
-//	public static final String BIGITEMS_JKEY	=	"userId";
-//	
-//	public static final String DISPATCH_DATE_JKEY	=	"userId";
-//	public static final String BIGITEMPRESENT_JKEY	=	"userId";
-//
-//	
+	public static final String MOVE_REQUEST_JKEY	=	"moveRequest";
+	
+	
+	public static final String DISPATCH_DATE_JKEY	=	"dispatchDate";
+	public static final String BIGITEMPRESENT_JKEY	=	"isBigItemsPresent";
+	public static final String MOVESTATUS_JKEY	=	"moveStatus";
+	public static final String BIGITEMS_JKEY	=	"bigItems";
+	
+	public static final String SMALLBOX_COUNT_JKEY	=	"smallBoxCount";
+	public static final String CONDITIONS_JKEY	=	"conditions";
+	public static final String MMOVIEID_JKEY	=	"moveId";
+	public static final String PRICE_QUOTE_JKEY	=	"priceQuote";
+	public static final String MEDIUMBOX_COUNT_JKEY	=	"mediumBoxCount";
+	
+	public static final String SOURCEADDRESS_JKEY	=	"sourceAddress";
+	public static final String FITIN_ELEVATOR_JKEY	=	"fitInElevator";
+	public static final String DISASSEMBLY_JKEY	=	"disassembly";
+
+	public static final String EXPECTED_RECEIVEDDATE_JKEY	=	"expectedReceivedDate";
+	public static final String DESTINATION_ADDESS_JKEY	=	"destinationAddress";
+
+	
+	
+	
+	/*
+	 * ############################ BOX Items
+	 */
 	
 	
 	
@@ -80,10 +87,22 @@ public class HttpConstants {
 	public static final String REQUIRES_DISASSEMBLY_JKEY	=	"requiresDisassembly";
 	public static final String DOES_FITIN_ELEVATOR_JKEY	=	"doesFitInElevator";
 	public static final String ITEM_URL_JKEY	=	"itemUrl";
+	public static final String ITEMIMAGE_JKEY	=	"image";
 	
 	
 	
 	
+	/*
+	 *########################## SignUp  
+	 * 
+	 */
+	
+	
+	public static final String SIGNUP_REQUEST	=	"signUpRequest";
+	
+	public static final String UPDATE_PROFILE_REQUEST	=	"updateProfileRequest";
+	
+	public static final String ACCEPT_REJECT_MOVEDEALREQUEST	=	"accrejMoveDealRequest";
 	
 	
 	

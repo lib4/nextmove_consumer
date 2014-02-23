@@ -37,8 +37,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/gotit_btn"
         android:text="Ok Got It!"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp" />
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp" />
      
      </LinearLayout>
 </RelativeLayout>

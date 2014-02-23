@@ -95,7 +95,7 @@ public class IndicatorView extends LinearLayout {
 	an.setInterpolator(new AccelerateDecelerateInterpolator());
 	an.setDuration(300);
 	an.setRepeatCount(0);
-	an.initialize(0, 0, 100, 100);
+	an.initialize(0, 0, 250, 250);
 	mDrawable = new AnimateDrawable(movingDot, an);
 	an.startNow();
     }

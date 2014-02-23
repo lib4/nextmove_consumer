@@ -38,13 +38,19 @@ public class SplashActivity extends Activity{
 		 * Do All Api 
 		 */
 		
+		
+		
+	
+		HttpHandler mSignUpHandler  =	new HttpHandler();
+		mSignUpHandler.doSignUp(this, null);
 		HttpHandler mSignInHandler	=	new HttpHandler();
 		mSignInHandler.doSignIn("anaschaky@gmail.com", "12345678", this, null);
-		
 		HttpHandler getMyMoves	=	new HttpHandler();
 		getMyMoves.getMyMoves(this, null);
-		
-		
+		HttpHandler createMoveHandler  = new HttpHandler();
+		createMoveHandler.createMove(this, null);
+		HttpHandler mUpdateProfileHandler	=	new HttpHandler();
+		mUpdateProfileHandler.updateProfile();
 		
 		
 		
