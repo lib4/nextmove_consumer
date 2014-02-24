@@ -1,7 +1,6 @@
 package com.lib4.picmove;
 
-import com.lib4.picmove.fragments.ChatFragment;
-import com.lib4.picmove.fragments.ProfileFragment;
+
 import com.lib4.picmove.fragments.SignInFragment;
 
 import android.app.Activity;

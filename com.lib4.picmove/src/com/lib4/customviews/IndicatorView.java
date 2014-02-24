@@ -23,7 +23,7 @@ public class IndicatorView extends LinearLayout {
     private AnimateDrawable mDrawable;
     Context context;
 
-    private int TOTAL_SCREEN_NUMBER = 4;
+    private int TOTAL_SCREEN_NUMBER = 3;
     private int CURRENTSCREEN = 1;
     private int NEXT_SCREEN = 2;
     Drawable movingDot;

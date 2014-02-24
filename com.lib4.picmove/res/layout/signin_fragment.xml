@@ -5,60 +5,44 @@
     android:background="@color/pane_background_color"
     android:orientation="vertical" >
 
-
-    <ImageView 
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
         android:src="@drawable/icon_green_dot"
-         android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"/>
-    
-    
-   
+        android:visibility="gone" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="vertical" >
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical"
+        android:paddingTop="30dp" >
 
-        
         <EditText
             android:id="@+id/email_edtTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:hint="email"
+            android:hint="Email Address"
             android:inputType="textEmailAddress"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
             android:textColor="@android:color/black" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/pane_background_color"
-            android:gravity="center" />
 
         <EditText
             android:id="@+id/password_edtTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:hint="password"
+            android:hint="Password"
             android:inputType="textPassword"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
             android:textColor="@android:color/black" />
     </LinearLayout>
-    
-     <TextView  
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        style="@style/blue_text_view"
-        android:text="New User Signup"/>
 
     <Button
         android:id="@+id/signin_btn"
@@ -66,10 +50,36 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-         android:layout_marginRight="5dp"
-        android:background="@drawable/signin_btn_selecton"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/btn_selecton"
         android:gravity="center"
-        android:text="SignIn" >
+        android:text="Sign In" >
+    </Button>
+
+    
+
+    <TextView
+     	style="@style/blue_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:text="Dont have an account?"
+	 />
+
+    <Button
+        android:id="@+id/signup_btn"
+        style="@style/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/btn_selecton"
+        android:gravity="center"
+        android:text="Sign Up"
+>
     </Button>
 
 </LinearLayout>

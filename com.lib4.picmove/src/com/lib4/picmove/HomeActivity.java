@@ -5,14 +5,14 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 
-import com.lib4.picmove.fragments.OnlineUsersFragment;
+import com.lib4.picmove.fragments.HomeFragment;
 import com.lib4.picmove.utils.Utils;
 
 
 
-public class OnlineUsersTileViewActivity extends BaseActivity {
+public class HomeActivity extends BaseActivity {
 
-	OnlineUsersFragment mTileViewFragment;
+	HomeFragment mHomeFragment;
 
 	
 	
@@ -21,7 +21,7 @@ public class OnlineUsersTileViewActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		String title 	=	getIntent().getStringExtra("Title");
 		if(title==null)
-			title	=	Utils.TOP_USERS_HEADER;
+			title	=	Utils.MOVES_HEADER;
 		
 		getActionBar().setTitle(title);
 		loadTileViewFragment();
@@ -39,7 +39,7 @@ public class OnlineUsersTileViewActivity extends BaseActivity {
 
 	private void loadTileViewFragment() {
 
-		mTileViewFragment = new OnlineUsersFragment();
+		mHomeFragment = new HomeFragment();
 		
 		FragmentManager fragmentManager = getFragmentManager();
 		FragmentTransaction fragmentTransaction = fragmentManager
@@ -50,7 +50,7 @@ public class OnlineUsersTileViewActivity extends BaseActivity {
 		// Replace whatever is in the fragment_container view with this
 		// fragment,
 		// and add the transaction to the back stack
-		fragmentTransaction.replace(R.id.fragment_holder, mTileViewFragment,OnlineUsersFragment.class.getName());
+		fragmentTransaction.replace(R.id.fragment_holder, mHomeFragment,HomeFragment.class.getName());
 
 		// Commit the transaction
 		fragmentTransaction.commit();

@@ -19,7 +19,7 @@ public class GetMyMovesParser {
 
 	String response;
 	Context context;
-	ContentValues values = new ContentValues();
+
 	public boolean isSuccess		=	true;
 	public String message			=	"";
 	
@@ -33,6 +33,9 @@ public class GetMyMovesParser {
 	 * Function used to parse and store the data on local db.
 	 */
 	private void parse(InputStream response) {
+		
+		
+		
 		/*
 		 * Parse the response here
 		 */
@@ -43,39 +46,125 @@ public class GetMyMovesParser {
 			JsonFactory jsonfactory = new JsonFactory();
 			JsonParser jsonParser = jsonfactory.createJsonParser(response);
 
+			
+		while (jsonParser.nextToken() != JsonToken.END_ARRAY) {
+			ContentValues values = new ContentValues();
+			Log.e("endObject","Pbject");
 			// Begin the parsing procedure
 			while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
+				
+				
 
 				String token = jsonParser.getCurrentName();
+				
+				Log.e("endObject","Pbject "+token);
 				//Log.e("token  "," "+token);
-				if (HttpConstants.MESSAGE_JKEY.equals(token)) {
+				if (HttpConstants.LARGEBOX_COUNT_JKEY.equals(token)) {
 
 					// get the next token which will be the value...
 					jsonParser.nextToken();
-					message = jsonParser.getText();
+					values.put(AppSqliteHelper.COLUMN_LARGEBOX_COUNT, jsonParser.getIntValue());
 				}
-				if (HttpConstants.STATUS_JKEY.equals(token)) {
+				
+
+				if (HttpConstants.MOVEID_JKEY.equals(token)) {
 
 					// get the next token which will be the value...
 					jsonParser.nextToken();
-					String status 	=	jsonParser.getText();
-					if(status.compareToIgnoreCase(HttpConstants.SUCCESS_JKEY)!=0){
-						isSuccess	=	false;
-					}
-				}
-				if (HttpConstants.PROFILE_JKEY.equals(token)) {
-					Log.e("SignIn Response Profile "," "+token);
-					//profileParser(jsonParser);
+					values.put(AppSqliteHelper.COLUMN_MOVEID, jsonParser.getText());
 				}
 
+				if (HttpConstants.DESTINATION_ADDESS_JKEY.equals(token)) {
+
+					// get the next token which will be the value...
+					jsonParser.nextToken();
+					values.put(AppSqliteHelper.COLUMN_DESTINATION_ADDRESS, jsonParser.getText());
+				}
+
+				if (HttpConstants.USERID_JKEY.equals(token)) {
+
+					// get the next token which will be the value...
+					jsonParser.nextToken();
+					values.put(AppSqliteHelper.COLUMN_USERID, jsonParser.getText());
+				}
+
+				if (HttpConstants.DISPATCH_DATE_JKEY.equals(token)) {
+
+					// get the next token which will be the value...
+					jsonParser.nextToken();
+					values.put(AppSqliteHelper.COLUMN_DISPATCH_DATE, jsonParser.getText());
+				}
+
+				
+				if (HttpConstants.BIGITEMPRESENT_JKEY.equals(token)) {
+
+					// get the next token which will be the value...
+					jsonParser.nextToken();
+					values.put(AppSqliteHelper.COLUMN_BIGITEM_PRESENT, jsonParser.getBooleanValue());
+				}
+				
+				if (HttpConstants.MOVESTATUS_JKEY.equals(token)) {
+
+					// get the next token which will be the value...
+					jsonParser.nextToken();
+					values.put(AppSqliteHelper.COLUMN_MOVE_STATUS, jsonParser.getText());
+				}
+				
+				if (HttpConstants.SOURCEADDRESS_JKEY.equals(token)) {
+
+					// get the next token which will be the value...
+					jsonParser.nextToken();
+					values.put(AppSqliteHelper.COLUMN_ADDRESS, jsonParser.getText());
+				}
+				
+				if (HttpConstants.SMALLBOX_COUNT_JKEY.equals(token)) {
+
+					// get the next token which will be the value...
+					jsonParser.nextToken();
+					values.put(AppSqliteHelper.COLUMN_SMALLBOX_COUNT, jsonParser.getIntValue());
+				}
+				
+				if (HttpConstants.EXPECTED_RECEIVEDDATE_JKEY.equals(token)) {
+
+					// get the next token which will be the value...
+					jsonParser.nextToken();
+					values.put(AppSqliteHelper.COLUMN_EXPECTED_RECEIVEDATE, jsonParser.getText());
+				}
+				
+				if (HttpConstants.MEDIUMBOX_COUNT_JKEY.equals(token)) {
+
+					// get the next token which will be the value...
+					jsonParser.nextToken();
+					values.put(AppSqliteHelper.COLUMN_MEDIUMBOX_COUNT, jsonParser.getIntValue());
+				}
+				
+				
+
+				if (HttpConstants.BIGITEMS_JKEY.equals(token)) {
+
+					// get the next token which will be the value...
+					bigItemParser(jsonParser);
+					
+				}
+				
+				
+			}
+			if(jsonParser.getCurrentToken()==JsonToken.END_OBJECT){
+				Log.e("MOVES ","MOVES "+values);
+				new DBManager(context).insertMoves(values);
 			}
 			
 			
 			Log.e("SignIn Response After Parsing "," "+values);
 
-			jsonParser.close();
-			if(isSuccess)
-			new DBManager(context).insertProfile(values);
+			
+			
+		}
+		
+		jsonParser.close();
+
+			
+			
 		} catch (JsonGenerationException e) {
 
 			e.printStackTrace();
@@ -94,53 +183,85 @@ public class GetMyMovesParser {
 	 */
 
 
-	private void moveParser(JsonParser jsonParser) {
+	private void bigItemParser(JsonParser jsonParser) {
 
-		try {
-			while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
-				String token = jsonParser.getCurrentName();
-				Log.e("Token ","Token"+token);
-				if (HttpConstants.LARGEBOX_COUNT_JKEY.equals(token)) {
+			
+			try {
+				while (jsonParser.nextToken() != JsonToken.END_ARRAY) {
+					
+					ContentValues values = new ContentValues();
+						while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
+							String token = jsonParser.getCurrentName();
+							Log.e("Token ","Token"+token);
+							if (HttpConstants.ITEMNAME_JKEY.equals(token)) {
+			
+								// get the next token which will be the value...
+								jsonParser.nextToken();
+								values.put(AppSqliteHelper.COLUMN_ITEM_NAME,
+										jsonParser.getText());
+							}
+							
+							if (HttpConstants.ITEM_DESCRIPTION_JKEY.equals(token)) {
+			
+								// get the next token which will be the value...
+								jsonParser.nextToken();
+								values.put(AppSqliteHelper.COLUMN_ITEM_DESCRIPTION,
+										jsonParser.getText());
+							}
+			
+							if (HttpConstants.MOVEID_JKEY.equals(token)) {
+			
+								// get the next token which will be the value...
+								jsonParser.nextToken();
+								//values.put(AppSqliteHelper.COLUMN_MOVEID,
+										//jsonParser.getText());
+							}
+			
+							if (HttpConstants.REQUIRES_DISASSEMBLY_JKEY.equals(token)) {
+			
+								// get the next token which will be the value...
+								jsonParser.nextToken();
+								values.put(AppSqliteHelper.COLUMN_REQUIRES_DISASSEMBLY,
+										jsonParser.getBooleanValue());
+							}
 
-					// get the next token which will be the value...
-					jsonParser.nextToken();
-					values.put(AppSqliteHelper.COLUMN_LARGEBOX_COUNT,
-							jsonParser.getIntValue());
-				}
-				
-				if (HttpConstants.PASSWORD_JKEY.equals(token)) {
-
-					// get the next token which will be the value...
-					jsonParser.nextToken();
-					values.put(AppSqliteHelper.COLUMN_PASSWORD,
-							jsonParser.getText());
-				}
-
-				if (HttpConstants.ADDRESS_JKEY.equals(token)) {
-
-					// get the next token which will be the value...
-					jsonParser.nextToken();
-					values.put(AppSqliteHelper.COLUMN_ADDRESS,
-							jsonParser.getText());
-				}
-
-				if (HttpConstants.EMAILVERIFIED_JKEY.equals(token)) {
-
-					// get the next token which will be the value...
-					jsonParser.nextToken();
-					values.put(AppSqliteHelper.COLUMN_EMAIL_VERIFIED,
-							jsonParser.getBooleanValue());
-				}
-
-				if (HttpConstants.PHONENUMBER_JKEY.equals(token)) {
-
-					// get the next token which will be the value...
-					jsonParser.nextToken();
-					values.put(AppSqliteHelper.COLUMN_PHONE_VERIFIED,
-							jsonParser.getText());
-				}
-
-			}
+							if (HttpConstants.BIGITEM_ID_JKEY.equals(token)) {
+			
+								// get the next token which will be the value...
+								jsonParser.nextToken();
+								values.put(AppSqliteHelper.COLUMN_BIGITEM_ID,
+										jsonParser.getText());
+							}
+							
+							
+			
+							if (HttpConstants.DOES_FITIN_ELEVATOR_JKEY.equals(token)) {
+			
+								// get the next token which will be the value...
+								jsonParser.nextToken();
+								values.put(AppSqliteHelper.COLUMN_DOES_FIT_IN_ELEVATOR,
+										jsonParser.getBooleanValue());
+							}
+							
+							
+							if (HttpConstants.ITEM_URL_JKEY.equals(token)) {
+								
+								// get the next token which will be the value...
+								jsonParser.nextToken();
+								values.put(AppSqliteHelper.COLUMN_ITEM_URL,
+										jsonParser.getText());
+							}
+			
+						}
+						
+						
+						if(jsonParser.getCurrentToken()==JsonToken.END_OBJECT){
+							
+							Log.e("BIG ITEM ","BIG ITEMS "+values);
+							new DBManager(context).insertBigItems(values);
+						}
+			
+		}
 
 		} catch (JsonGenerationException e) {
 

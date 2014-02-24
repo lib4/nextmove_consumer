@@ -1,26 +1,38 @@
 package com.lib4.picmove.fragments;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import com.lib4.picmove.OnlineUsersTileViewActivity;
+import com.lib4.picmove.HomeActivity;
 import com.lib4.picmove.R;
+import com.lib4.picmove.SignUpActivity;
+import com.lib4.picmove.httphandler.HTTPResponseListener;
+import com.lib4.picmove.httphandler.HttpHandler;
 import com.lib4.picmove.utils.Utils;
 
-public class SignInFragment extends BaseFragment {
+public class SignInFragment extends BaseFragment implements
+		HTTPResponseListener {
 
 	LinearLayout mSignInLayout;
 	EditText usernameEdtTxt, passwordEdtTxt;
-	Button signInButton;
+	Button signInButton,signupButton;
+	static ProgressDialog mDialog;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -38,30 +50,28 @@ public class SignInFragment extends BaseFragment {
 				.findViewById(R.id.email_edtTxt);
 		passwordEdtTxt = (EditText) mSignInLayout
 				.findViewById(R.id.password_edtTxt);
-		signInButton = (Button) mSignInLayout.findViewById(R.id.signin_btn);
 
+		usernameEdtTxt.setText("anaschaky@yahoo.co.in");
+		passwordEdtTxt.setText("12345678");
+
+		signInButton = (Button) mSignInLayout.findViewById(R.id.signin_btn);
+		signupButton =	(Button) mSignInLayout.findViewById(R.id.signup_btn);
 		signInButton.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
+				trgrSignInWebService();
+			}
+		});
+		
+		signupButton.setOnClickListener(new OnClickListener() {
 
-				if (usernameEdtTxt.getText().toString()
-						.compareTo(Utils.USERNAME) == 0
-						&& passwordEdtTxt.getText().toString()
-								.compareTo(Utils.PASSWORD) == 0) {
-
-					// Calling the next Activity.
-					Intent intent = new Intent(getActivity(),
-							OnlineUsersTileViewActivity.class);
-					startActivity(intent);
-					getActivity().finish();
-
-				} else {
-
-					showAlertDialog(getActivity().getString(
-							R.string.uname_not_matching));
-				}
-
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getActivity(),
+						SignUpActivity.class);
+				startActivity(intent);
+				getActivity().finish();
 			}
 		});
 
@@ -92,5 +102,81 @@ public class SignInFragment extends BaseFragment {
 		alertDialog.show();
 
 	}
+
+	@Override
+	public void onSuccess() {
+		dismissDialoge();
+		// Calling the next Activity.
+		Intent intent = new Intent(getActivity(),
+				HomeActivity.class);
+		startActivity(intent);
+		getActivity().finish();
+	}
+
+	@Override
+	public void onFailure(final int failureCode, final String message) {
+		Log.e("On Failure","On failure"+message);
+		dismissDialoge();
+		final Handler mHandler = new Handler(Looper.getMainLooper()) {
+
+
+			public void handleMessage(Message msg) {
+				if (failureCode == HttpHandler.NO_NETWORK_CODE) {
+
+
+					Utils.showNoNetworkAlertDialog(getActivity());
+				} else {
+					showAlertDialog(message);
+
+
+				}
+			}
+		};
+		
+		
+		
+		mHandler.sendEmptyMessage(1);
+
+	}
+	
+	
+	/**
+	 * Disimiss Dialog
+	 */
+	
+	private void dismissDialoge(){
+		if (mDialog != null && mDialog.isShowing())
+			mDialog.dismiss();
+
+	}
+
+	/**
+	 * TRIGGER SIGN IN WEB SERVICE CALL
+	 */
+
+
+	private void trgrSignInWebService() {
+		hideKeyboard();
+		mDialog = new ProgressDialog(getActivity());
+		mDialog.setMessage(getActivity().getString(R.string.signin));
+		mDialog.setCancelable(false);
+		mDialog.show();
+		new HttpHandler().doSignIn(usernameEdtTxt.getText().toString(),
+				passwordEdtTxt.getText().toString(), getActivity(),
+				SignInFragment.this);
+		
+	}
+	/**
+	 * Method to hide the keyboard
+	 */
+
+
+	private void hideKeyboard(){
+		InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(
+			      Context.INPUT_METHOD_SERVICE);
+			imm.hideSoftInputFromWindow(usernameEdtTxt.getWindowToken(), 0);
+	}
+
+	
 
 }

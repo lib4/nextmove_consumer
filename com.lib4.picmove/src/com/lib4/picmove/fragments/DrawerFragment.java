@@ -2,7 +2,8 @@ package com.lib4.picmove.fragments;
 
 
 
-import com.lib4.picmove.OnlineUsersTileViewActivity;
+
+import com.lib4.picmove.HomeActivity;
 import com.lib4.picmove.ProfileActivity;
 import com.lib4.picmove.R;
 import com.lib4.picmove.SignInActivity;
@@ -117,7 +118,7 @@ public class DrawerFragment extends BaseFragment{
 			}
 			
 			Intent intent = new Intent(getActivity(),
-					OnlineUsersTileViewActivity.class);
+					HomeActivity.class);
 			
 			switch(v.getId()){
 			
@@ -125,7 +126,7 @@ public class DrawerFragment extends BaseFragment{
 				
 				
 				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				intent.putExtra("Title", "Top Users");
+				intent.putExtra("Title", "Moves");
 				startActivity(intent);
 				break;
 				

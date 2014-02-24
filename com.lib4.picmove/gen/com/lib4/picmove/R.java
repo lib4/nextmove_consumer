@@ -22,14 +22,16 @@ public final class R {
     }
     public static final class color {
         public static final int blue_text_color=0x7f050009;
+        public static final int button_background_color=0x7f05000a;
+        public static final int button_pressed_color=0x7f050007;
         public static final int grey_selector=0x7f050008;
         public static final int header_background_color=0x7f050001;
         public static final int item_pane=0x7f050004;
         public static final int pane_background_color=0x7f050000;
         public static final int shadow_color=0x7f050005;
-        public static final int signin_button_pressed_color=0x7f050007;
         public static final int subtitle_color=0x7f050003;
         public static final int text_color=0x7f050006;
+        public static final int white_text_color=0x7f05000b;
         public static final int white_tile_background_color=0x7f050002;
     }
     public static final class dimen {
@@ -49,16 +51,16 @@ public final class R {
         public static final int tile_view_image_hieght=0x7f070005;
     }
     public static final class drawable {
-        public static final int default_profile_pic=0x7f020000;
-        public static final int drawer_shadow=0x7f020001;
-        public static final int ic_drawer=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int ic_tick_mark=0x7f020004;
-        public static final int ic_vdots=0x7f020005;
-        public static final int icon_green_dot=0x7f020006;
-        public static final int logo=0x7f020007;
-        public static final int selector=0x7f020008;
-        public static final int signin_btn_selecton=0x7f020009;
+        public static final int btn_selecton=0x7f020000;
+        public static final int default_profile_pic=0x7f020001;
+        public static final int drawer_shadow=0x7f020002;
+        public static final int ic_drawer=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int ic_tick_mark=0x7f020005;
+        public static final int ic_vdots=0x7f020006;
+        public static final int icon_green_dot=0x7f020007;
+        public static final int logo=0x7f020008;
+        public static final int selector=0x7f020009;
         public static final int splash=0x7f02000a;
         public static final int transparent_selector=0x7f02000b;
         public static final int tutorial_bullets_bg=0x7f02000c;
@@ -86,15 +88,16 @@ public final class R {
         public static final int user9=0x7f020022;
     }
     public static final class id {
-        public static final int AddAsFriend=0x7f0b0021;
-        public static final int Block=0x7f0b0022;
-        public static final int Chat=0x7f0b001f;
-        public static final int Message=0x7f0b001e;
-        public static final int Profile=0x7f0b0020;
+        public static final int AddAsFriend=0x7f0b0025;
+        public static final int Block=0x7f0b0026;
+        public static final int Chat=0x7f0b0023;
+        public static final int Message=0x7f0b0022;
+        public static final int Profile=0x7f0b0024;
         public static final int action_items=0x7f0b0015;
-        public static final int action_search=0x7f0b0024;
-        public static final int action_settings=0x7f0b0023;
-        public static final int actions=0x7f0b0025;
+        public static final int action_search=0x7f0b0028;
+        public static final int action_settings=0x7f0b0027;
+        public static final int actions=0x7f0b0029;
+        public static final int address=0x7f0b001e;
         public static final int age=0x7f0b0013;
         public static final int background=0x7f0b0017;
         public static final int chat=0x7f0b0004;
@@ -103,8 +106,8 @@ public final class R {
         public static final int email_edtTxt=0x7f0b0018;
         public static final int fragment_holder=0x7f0b0001;
         public static final int friends=0x7f0b000e;
-        public static final int gotit_btn=0x7f0b001d;
-        public static final int indicatorview=0x7f0b001c;
+        public static final int gotit_btn=0x7f0b0021;
+        public static final int indicatorview=0x7f0b0020;
         public static final int leftImage=0x7f0b0003;
         public static final int lin=0x7f0b0016;
         public static final int listchat=0x7f0b0006;
@@ -115,17 +118,20 @@ public final class R {
         public static final int newmessage=0x7f0b0007;
         public static final int newusers=0x7f0b0009;
         public static final int onlineusers=0x7f0b000a;
-        public static final int parentholder=0x7f0b001b;
+        public static final int parentholder=0x7f0b001f;
         public static final int password_edtTxt=0x7f0b0019;
+        public static final int phoneNumber=0x7f0b001d;
         public static final int photos=0x7f0b000d;
         public static final int profile_pic=0x7f0b0011;
+        public static final int retype_password_edtTxt=0x7f0b001c;
         public static final int rightImage=0x7f0b0005;
         public static final int signin_btn=0x7f0b001a;
+        public static final int signup_btn=0x7f0b001b;
         public static final int status_text=0x7f0b0014;
         public static final int tiles=0x7f0b0010;
         public static final int topusers=0x7f0b0008;
-        public static final int view_list=0x7f0b0027;
-        public static final int view_tile=0x7f0b0026;
+        public static final int view_list=0x7f0b002b;
+        public static final int view_tile=0x7f0b002a;
     }
     public static final class integer {
         public static final int config_mediumAnimTime=0x7f060000;
@@ -133,18 +139,20 @@ public final class R {
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int base_layout=0x7f030001;
-        public static final int chat_fragment=0x7f030002;
-        public static final int chat_items=0x7f030003;
-        public static final int chats=0x7f030004;
-        public static final int drawer_fragment=0x7f030005;
-        public static final int item=0x7f030006;
-        public static final int onlineusers_fragment=0x7f030007;
-        public static final int profile_fragment=0x7f030008;
-        public static final int signin_fragment=0x7f030009;
-        public static final int signout_fragment=0x7f03000a;
-        public static final int splash=0x7f03000b;
-        public static final int tiles=0x7f03000c;
-        public static final int tutorial_fragment=0x7f03000d;
+        public static final int base_layout_drawer=0x7f030002;
+        public static final int chat_fragment=0x7f030003;
+        public static final int chat_items=0x7f030004;
+        public static final int chats=0x7f030005;
+        public static final int drawer_fragment=0x7f030006;
+        public static final int item=0x7f030007;
+        public static final int onlineusers_fragment=0x7f030008;
+        public static final int profile_fragment=0x7f030009;
+        public static final int signin_fragment=0x7f03000a;
+        public static final int signout_fragment=0x7f03000b;
+        public static final int signup_fragment=0x7f03000c;
+        public static final int splash=0x7f03000d;
+        public static final int tiles=0x7f03000e;
+        public static final int tutorial_fragment=0x7f03000f;
     }
     public static final class menu {
         public static final int actions_menu=0x7f0a0000;
@@ -177,10 +185,15 @@ public final class R {
         public static final int app_name=0x7f080000;
         public static final int drawer_close=0x7f080004;
         public static final int drawer_open=0x7f080003;
+        public static final int getmoves=0x7f080019;
         public static final int hello_world=0x7f080002;
         /**  SIGNIN END 
          */
-        public static final int logut_alert=0x7f080015;
+        public static final int logut_alert=0x7f08001a;
+        public static final int no_network=0x7f080015;
+        public static final int signin=0x7f080017;
+        public static final int signup=0x7f080018;
+        public static final int unable_to_reach=0x7f080016;
         /**  SIGNIN BEGIN 
          */
         public static final int uname_not_matching=0x7f080014;

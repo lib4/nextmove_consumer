@@ -17,25 +17,23 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.PopupMenu;
 import android.widget.SearchView;
 
-import com.lib4.picmove.fragments.OnlineUsersFragment;
 import com.lib4.picmove.utils.Utils;
 
-public class BaseActivity extends Activity implements
-		SearchView.OnQueryTextListener, SearchView.OnCloseListener {
+public class BaseActivity extends Activity 
+		 {
 
 	public DrawerLayout mDrawerLayout;
 	public ActionBarDrawerToggle mDrawerToggle;
-	SearchView searchView;
+	
 	
 	private String TAG = "BASE ACTIVITY";
-	Menu searchMenuItem,viewAsMenuItem;
 
 	/**
 	 * Called when the activity is starting.
 	 */
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.base_layout);
+		setContentView(R.layout.base_layout_drawer);
 		Utils.IS_TABLET = false;// Utils.isTabletDevice(this);
 
 		if (!Utils.IS_TABLET) {
@@ -129,8 +127,7 @@ public class BaseActivity extends Activity implements
 			break;
 		case R.id.actions:
 
-			showViewAsMenu();
-
+	
 			break;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -211,129 +208,5 @@ public class BaseActivity extends Activity implements
 		}
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		
-		searchMenuItem = menu;
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.search_menu, menu);
-		searchView = (SearchView) menu.findItem(R.id.action_search)
-				.getActionView();
-		searchView.setOnQueryTextListener(this);
-		searchView.setOnCloseListener(this);
 
-
-		return super.onCreateOptionsMenu(menu);
-	}
-
-	public void showSearchActionItem() {
-		if (searchMenuItem != null) {
-			
-			searchMenuItem.findItem(R.id.action_search).setVisible(true);
-			searchMenuItem.findItem(R.id.actions).setVisible(true);
-		}
-	}
-
-	public void hideSearchActionItem() {
-		Log.e("text", "test");
-		if (searchMenuItem != null) {
-			Log.e("text", "test" + searchMenuItem.findItem(R.id.action_search));
-			searchMenuItem.findItem(R.id.action_search).setVisible(false);
-			searchMenuItem.findItem(R.id.actions).setVisible(false);
-		}
-	}
-
-	@Override
-	public boolean onClose() {
-		// TODO Auto-generated method stub
-
-		return false;
-	}
-
-	@Override
-	public boolean onQueryTextChange(String arg0) {
-		// TODO Auto-generated method stub
-
-		String CallerActivity = this.getComponentName().getClassName();
-
-		if (CallerActivity
-				.equals("com.lib4.themeonlinebuddies.OnlineUsersTileViewActivity")) {
-			OnlineUsersFragment onlineUsersFragment = (OnlineUsersFragment) getFragmentManager()
-					.findFragmentByTag(OnlineUsersFragment.class.getName());
-			onlineUsersFragment.trgrSearch(arg0);
-
-		}
-
-		return false;
-	}
-
-	@Override
-	public boolean onQueryTextSubmit(String query) {
-
-		hideKeyboard();
-		return false;
-	}
-
-	/**
-	 * Method to hide the keyboard
-	 */
-
-	private void hideKeyboard() {
-		InputMethodManager imm = (InputMethodManager) this
-				.getSystemService(Context.INPUT_METHOD_SERVICE);
-		imm.hideSoftInputFromWindow(searchView.getWindowToken(), 0);
-	}
-
-	private void showViewAsMenu() {
-
-		View mView = findViewById(R.id.actions);
-		PopupMenu popup = new PopupMenu(this, mView);
-		popup.getMenuInflater().inflate(R.menu.viewas_menu, popup.getMenu());
-		popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-			public boolean onMenuItemClick(MenuItem item) {
-
-				switch (item.getItemId()) {
-
-				case R.id.view_list:
-				
-					if (!Utils.TILE_VIEW_PREFERENCE) {
-						// Nothing
-					} else {
-						Utils.TILE_VIEW_PREFERENCE	=	false;
-						resetView();
-						
-					}
-					break;
-				case R.id.view_tile:
-					if (Utils.TILE_VIEW_PREFERENCE) {
-						// Nothing
-					} else {
-						Utils.TILE_VIEW_PREFERENCE	=	true;
-						resetView();
-						
-					}
-					break;
-				}
-				return false;
-			}
-		});
-
-		popup.show();
-
-	}
-	
-	private void resetView(){
-		
-		String CallerActivity = this.getComponentName()
-				.getClassName();
-
-		if (CallerActivity
-				.equals("com.lib4.themeonlinebuddies.OnlineUsersTileViewActivity")) {
-			OnlineUsersFragment onlineUsersFragment = (OnlineUsersFragment) getFragmentManager()
-					.findFragmentByTag(
-							OnlineUsersFragment.class.getName());
-			onlineUsersFragment.resetView();
-
-		}
-	}
 }

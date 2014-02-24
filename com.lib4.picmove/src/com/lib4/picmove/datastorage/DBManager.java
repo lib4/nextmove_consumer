@@ -61,6 +61,32 @@ public class DBManager {
 	}
 
 	
+	/**
+	 * Inserting on to Moves Table. 
+	 */
+	public void insertMoves(ContentValues values) {
+		open();
+		long insertId = appSqLiteDatabase.insert(
+				sqLiteOpenHelper.TABLE_MOVES, null, values);
+		
+		close();
+
+	}
+	
+	
+	
+	/**
+	 * Inserting on to Bigitems Table. 
+	 */
+	public void insertBigItems(ContentValues values) {
+		open();
+		long insertId = appSqLiteDatabase.insert(
+				sqLiteOpenHelper.TABLE_BIGITEMS, null, values);
+		
+		close();
+
+	}
+	
 	
 	
 	/**

@@ -12,5 +12,11 @@
         android:orientation="vertical" >
     </FrameLayout>
 
+    <fragment
+        android:id="@+id/drawer_fragment"
+        android:name="com.lib4.picmove.fragments.DrawerFragment"
+        android:layout_width="@dimen/drawer_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="start" />
 
 </android.support.v4.widget.DrawerLayout>

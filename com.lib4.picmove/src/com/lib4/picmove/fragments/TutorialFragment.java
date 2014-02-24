@@ -1,11 +1,15 @@
 package com.lib4.picmove.fragments;
 
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
@@ -21,6 +25,7 @@ import android.widget.Toast;
 
 import com.lib4.customviews.CustomParentView;
 import com.lib4.customviews.IndicatorView;
+
 import com.lib4.picmove.R;
 import com.lib4.picmove.SignInActivity;
 import com.lib4.picmove.SplashActivity;
@@ -35,11 +40,12 @@ public class TutorialFragment extends Fragment {
 	private static final int SWIPE_THRESHOLD_VELOCITY = 200;
 	private GestureDetector gestureDetector;
 	View.OnTouchListener gestureListener;
-	IndicatorView	mIndicatorView;
-	 private int CURRENT_SCREEN;
-	 private int TOTAL_NUM_SCREENS	=	3;
-	 
-	 private Button gotItButton;
+	IndicatorView mIndicatorView;
+	private int CURRENT_SCREEN;
+	private int TOTAL_NUM_SCREENS = 3;
+	Handler mHandler = new Handler();
+	private Button gotItButton;
+	Timer mTimerTask;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,7 +54,8 @@ public class TutorialFragment extends Fragment {
 		mRelativeLayout = (RelativeLayout) inflater.inflate(
 				R.layout.tutorial_fragment, container, false);
 
-		mFrameLayout	=	(CustomParentView) mRelativeLayout.findViewById(R.id.parentholder);
+		mFrameLayout = (CustomParentView) mRelativeLayout
+				.findViewById(R.id.parentholder);
 		gestureDetector = new GestureDetector(getActivity(),
 				new CustomGestureDetector());
 		gestureListener = new View.OnTouchListener() {
@@ -59,20 +66,27 @@ public class TutorialFragment extends Fragment {
 		};
 
 		mFrameLayout.setOnTouchListener(gestureListener);
-		CURRENT_SCREEN	=	1;
-		
-		mIndicatorView = (IndicatorView) mRelativeLayout.findViewById(R.id.indicatorview);
-		//mRelativeLayout.addView(mIndicatorView);
+
+		showTurialPicSlides();
+
+		gotItButton = (Button) mRelativeLayout.findViewById(R.id.gotit_btn);
+		gotItButton.setOnClickListener(gotiItBtnClick);
+		 startAnimation(getActivity());
+		return mRelativeLayout;
+	}
+
+	private void showTurialPicSlides() {
+
+		CURRENT_SCREEN = 1;
+		mIndicatorView = (IndicatorView) mRelativeLayout
+				.findViewById(R.id.indicatorview);
+		// mRelativeLayout.addView(mIndicatorView);
 		mIndicatorView.setDrawables(R.drawable.tutorial_number_active,
-			R.drawable.tutorial_bullets_bg, R.drawable.tutorial_number_inactive);
+				R.drawable.tutorial_bullets_bg,
+				R.drawable.tutorial_number_inactive);
 		mIndicatorView.setNumberofScreens(TOTAL_NUM_SCREENS);
 		mIndicatorView.switchToScreen(CURRENT_SCREEN, CURRENT_SCREEN);
-		
-		
-		gotItButton	=	( Button)mRelativeLayout.findViewById(R.id.gotit_btn);
-		gotItButton.setOnClickListener(gotiItBtnClick);
-		
-		return mRelativeLayout;
+
 	}
 
 	private void AddCustomView(FrameLayout mFrameLayout) {
@@ -94,22 +108,24 @@ public class TutorialFragment extends Fragment {
 					Toast.LENGTH_SHORT).show();
 		}
 	}
-	
-	private OnClickListener gotiItBtnClick	= new View.OnClickListener() {
-		
+
+	private void RemoveAllCustomView() {
+
+		mFrameLayout.removeAllViews();
+
+	}
+
+	private OnClickListener gotiItBtnClick = new View.OnClickListener() {
+
 		@Override
 		public void onClick(View v) {
-			
+
 			// Calling the next Activity.
 			Intent intent = new Intent(getActivity(), SignInActivity.class);
 			startActivity(intent);
 			getActivity().finish();
 		}
-	};	
-	
-	
-	
-	
+	};
 
 	/**
 	 * 
@@ -128,18 +144,15 @@ public class TutorialFragment extends Fragment {
 				// right to left swipe
 				if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE
 						&& Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-					Toast.makeText(getActivity(), "Left Swipe",
-							Toast.LENGTH_SHORT).show();
-					AddCustomView(mFrameLayout);
-					mIndicatorView.switchToScreen(CURRENT_SCREEN,
-						    getScreenNumberIncrement());
+					// Toast.makeText(getActivity(), "Left Swipe",
+					// Toast.LENGTH_SHORT).show();
+					leftSwipe();
+					
 				} else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE
 						&& Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-					Toast.makeText(getActivity(), "Right Swipe",
-							Toast.LENGTH_SHORT).show();
-					RemoveCustomView(mFrameLayout);
-					 mIndicatorView.switchToScreen(CURRENT_SCREEN,
-							    getScreenNumberDecrement());
+					// Toast.makeText(getActivity(), "Right Swipe",
+					// Toast.LENGTH_SHORT).show();
+					rightSwipe();
 				}
 			} catch (Exception e) {
 				// nothing
@@ -154,31 +167,85 @@ public class TutorialFragment extends Fragment {
 		}
 
 	}
-	
-	 private int getScreenNumberIncrement(){
-			if(CURRENT_SCREEN==TOTAL_NUM_SCREENS){
-			    CURRENT_SCREEN	=	TOTAL_NUM_SCREENS;
-			    return CURRENT_SCREEN;
-			}
-			if(CURRENT_SCREEN<TOTAL_NUM_SCREENS)
-			    CURRENT_SCREEN++;
-			
-			return CURRENT_SCREEN;
-			
-		    }
-		    
-		    private int getScreenNumberDecrement(){
-			
-			if(CURRENT_SCREEN==1){
-			    CURRENT_SCREEN	=	1;
-			    return CURRENT_SCREEN;
-			}
-			if(CURRENT_SCREEN>1)
-			    CURRENT_SCREEN--;
-			
-			return CURRENT_SCREEN;
-			
-		    }
 
+	
+	
+	private void leftSwipe(){
+		AddCustomView(mFrameLayout);
+
+		if (CURRENT_SCREEN == TOTAL_NUM_SCREENS) {
+			CURRENT_SCREEN = 0;
+			RemoveAllCustomView();
+		}
+		mIndicatorView.switchToScreen(CURRENT_SCREEN,
+				getScreenNumberIncrement());
+		
+	}
+	private void rightSwipe(){
+		RemoveCustomView(mFrameLayout);
+		mIndicatorView.switchToScreen(CURRENT_SCREEN,
+				getScreenNumberDecrement());
+	}
+	
+	private int getScreenNumberIncrement() {
+		if (CURRENT_SCREEN == TOTAL_NUM_SCREENS) {
+			return CURRENT_SCREEN;
+		}
+		if (CURRENT_SCREEN < TOTAL_NUM_SCREENS)
+			CURRENT_SCREEN++;
+
+		return CURRENT_SCREEN;
+
+	}
+
+	private int getScreenNumberDecrement() {
+
+		if (CURRENT_SCREEN == 1) {
+			CURRENT_SCREEN = 1;
+			return CURRENT_SCREEN;
+		}
+		if (CURRENT_SCREEN > 1)
+			CURRENT_SCREEN--;
+
+		return CURRENT_SCREEN;
+
+	}
+
+	private void startAnimation(Context context) {
+
+		mTimerTask	=	new Timer();
+		mTimerTask.schedule(new UpdateTimeTask(), 2000, 3000);
+	}
+
+	final class UpdateTimeTask extends TimerTask {
+		public void run() {
+			mHandler.post(new Runnable() {
+
+				@Override
+				public void run() {
+				leftSwipe();
+
+				}
+			});
+		}
+	}
+	
+	@Override
+	public void onPause(){
+		super.onPause();
+		if(mTimerTask!=null){
+			mTimerTask.cancel();
+			mTimerTask.purge();
+		}
+		Log.e("Paused","Paused");
+		
+	}
+	
+	@Override
+	public void onStop(){
+		super.onStop();
+		Log.e("Stop","Stop");
+		
+	}
 
 }

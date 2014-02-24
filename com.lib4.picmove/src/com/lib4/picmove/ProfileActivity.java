@@ -51,17 +51,6 @@ public class ProfileActivity extends BaseActivity{
 		fragmentTransaction.commit();
 
 	}
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		hideSearchActionItem();
-		return true;
-	}
-	
-	public void onDestroy(){
-		showSearchActionItem();
-		super.onDestroy();
-	}
+
 
 }

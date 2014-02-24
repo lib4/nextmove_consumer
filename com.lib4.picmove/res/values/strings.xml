@@ -31,7 +31,15 @@
     
     <!-- SIGNIN BEGIN -->
   	 <string name="uname_not_matching">Authorization Required. Invalid email/password combination.</string>
+  	   <string name="no_network"></string>
+  	   <string name="unable_to_reach">Server is temperorily not available. Please try after some time.</string>
+  	  <string name="signin">SignIn...</string>
+  	   <string name="signup">SignUp...</string>
+  	   <string name="getmoves">Getting Moves...</string>
       <!-- SIGNIN END -->
     
-        <string name="logut_alert">Do you really want to logout?</string>
+    <string name="logut_alert">Do you really want to logout?</string>
+        
+        
+        
 </resources>
