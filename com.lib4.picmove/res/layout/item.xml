@@ -13,57 +13,45 @@
         android:padding="2dp">
 
         <ImageView
-            android:id="@+id/profile_pic"
-            android:layout_width="wrap_content"
+            android:id="@+id/itempic"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="false"
+            android:adjustViewBounds="true"
             android:background="@drawable/default_profile_pic"
             android:layout_centerVertical="true"
-            android:scaleType="fitXY" />
+            android:scaleType="centerInside"
+             />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/details"
             style="@style/blue_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/profile_pic"
-            android:text="Jeana Cleetus"
+            android:layout_below="@+id/itempic"
+            android:text="Small Box : 20 \nMedium Box\nBig Box : 20\n Items wont fit in box : 20\nRequires Disassembly\nFit In Elevator : 05"
             android:textSize="15sp" >
         </TextView>
-           <TextView
-            android:id="@+id/age"
-            style="@style/blue_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/profile_pic"
-            android:layout_below="@+id/name"
-            android:text="Age : 20"
-            android:textSize="15sp" >
-        </TextView>
-        
-        
+           
 
         <TextView
-            android:id="@+id/status_text"
+            android:id="@+id/address"
             style="@style/text_view_black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/age"
-         
-            android:layout_toRightOf="@+id/profile_pic"
+            android:layout_below="@+id/details"
             android:layout_weight="1.0"
-            android:text="Pray that this letter meets you well,though we never meet or seen each other before, but I believe that nature has a way of bringing" >
+            android:text="Move From \n Californai Georgia edededededede\n Move To \n India bangalore " >
         </TextView>
 
         <ImageView
             android:id="@+id/action_items"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/lin"
             android:layout_margin="2dp"
-            android:background="@drawable/ic_vdots"
-            android:visibility="visible" />
+            android:background="@drawable/ic_vdots"/>
     </RelativeLayout>
 
 </FrameLayout>

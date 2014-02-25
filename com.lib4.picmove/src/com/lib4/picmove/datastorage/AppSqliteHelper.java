@@ -44,7 +44,9 @@ public class AppSqliteHelper extends SQLiteOpenHelper {
 	public static final String COLUMN_USERID = "userId";
 	public static final String COLUMN_SOURCE_ADDRESS = "sourceAddress";
 	public static final String COLUMN_EXPECTED_RECEIVEDATE = "expectedReceiveDate";
-
+	public static final String COLUMN_ROOT_ITEM_IMAGE_URL = "itemUrl";
+	public static final String COLUMN_NUMBER_OF_BIGITEMS	=	"numberOfBigItems";
+	
 	/**
 	 * BIG ITEM Table Columns
 	 * 
@@ -84,6 +86,8 @@ public class AppSqliteHelper extends SQLiteOpenHelper {
 			COLUMN_DESTINATION_ADDRESS + " text," +
 			COLUMN_USERID + " text," +
 			COLUMN_SOURCE_ADDRESS + " text," +
+			COLUMN_ROOT_ITEM_IMAGE_URL + " text," +
+			COLUMN_NUMBER_OF_BIGITEMS + " int not null default 0," +
 			COLUMN_EXPECTED_RECEIVEDATE + " text );";
 	
 	

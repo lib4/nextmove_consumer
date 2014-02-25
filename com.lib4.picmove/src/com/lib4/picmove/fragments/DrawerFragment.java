@@ -3,11 +3,6 @@ package com.lib4.picmove.fragments;
 
 
 
-import com.lib4.picmove.HomeActivity;
-import com.lib4.picmove.ProfileActivity;
-import com.lib4.picmove.R;
-import com.lib4.picmove.SignInActivity;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,14 +12,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.Toast;
+
+import com.lib4.picmove.CreateNewMoveActivity;
+import com.lib4.picmove.HomeActivity;
+import com.lib4.picmove.R;
+import com.lib4.picmove.SignInActivity;
 
 
 public class DrawerFragment extends BaseFragment{
 
 	
 	ScrollView drawerLayout;
-	LinearLayout my_profile,photos,friends,logout,topusers,newusers,onlineusers,memberlookup,messages;
+	LinearLayout my_profile,logout,moves,createmove;
 	
 	
 
@@ -41,27 +40,18 @@ public class DrawerFragment extends BaseFragment{
 	
 	private void init(){
 		
-		my_profile	=	(LinearLayout) drawerLayout.findViewById(R.id.my_profile);
-		photos	=	(LinearLayout) drawerLayout.findViewById(R.id.photos);
-		friends	=	(LinearLayout) drawerLayout.findViewById(R.id.friends);
+
 		logout	=	(LinearLayout) drawerLayout.findViewById(R.id.logout);
-		topusers	=	(LinearLayout) drawerLayout.findViewById(R.id.topusers);
-		newusers	=	(LinearLayout) drawerLayout.findViewById(R.id.newusers);
-		onlineusers	=	(LinearLayout) drawerLayout.findViewById(R.id.onlineusers);
-		memberlookup	=	(LinearLayout) drawerLayout.findViewById(R.id.memberlookup);
+		moves	=	(LinearLayout) drawerLayout.findViewById(R.id.moves);
+		createmove	=	(LinearLayout) drawerLayout.findViewById(R.id.createmove);
+		my_profile	=	(LinearLayout) drawerLayout.findViewById(R.id.profile);
+		
 	
 		resolveHighLight();
 		
-		
-		topusers.setOnClickListener(drawerEntryClick);
-		onlineusers.setOnClickListener(drawerEntryClick);
-		newusers.setOnClickListener(drawerEntryClick);
-		memberlookup.setOnClickListener(drawerEntryClick);
-		
+		createmove.setOnClickListener(drawerEntryClick);
+		moves.setOnClickListener(drawerEntryClick);
 		my_profile.setOnClickListener(drawerEntryClick);
-		
-		friends.setOnClickListener(drawerEntryClick);
-		photos.setOnClickListener(drawerEntryClick);
 		logout.setOnClickListener(drawerEntryClick);
 	}
 	
@@ -73,37 +63,28 @@ public class DrawerFragment extends BaseFragment{
 		disableHightLight();
 		String callingActivityName = getActivity().getComponentName()
 				.getClassName();
-		String packageName = "com.lib4.themeonlinebuddies.";
+		String packageName = "com.lib4.picmove.";
 		
 		
 		String title 	=	getActivity().getIntent().getStringExtra("Title");
 		if(title==null){
-			topusers.setBackgroundColor(getResources().getColor(
+			logout.setBackgroundColor(getResources().getColor(
 					R.color.grey_selector));
-		}else if(title.compareToIgnoreCase("New Users")==0){	
-			newusers.setBackgroundColor(getResources().getColor(
-					R.color.grey_selector));
-			
-		}else if(title.compareToIgnoreCase("Online Users")==0){
-			onlineusers.setBackgroundColor(getResources().getColor(
+		}else if(title.compareToIgnoreCase("Moves")==0){	
+			moves.setBackgroundColor(getResources().getColor(
 					R.color.grey_selector));
 			
-		}else if(title.compareToIgnoreCase("Member LookUp")==0){
-			memberlookup.setBackgroundColor(getResources().getColor(
+		}else if(title.compareToIgnoreCase("New Move")==0){
+			createmove.setBackgroundColor(getResources().getColor(
 					R.color.grey_selector));
 			
-		}else if(title.compareToIgnoreCase("MyProfile")==0){
+		}else if(title.compareToIgnoreCase("Profile")==0){
 			my_profile.setBackgroundColor(getResources().getColor(
 					R.color.grey_selector));
 			
 		}
 			
-		/*
-		if (callingActivityName.equalsIgnoreCase(packageName
-				+ "OnlineUsersTileViewActivity")) {
-			topusers.setBackgroundColor(getResources().getColor(
-					R.color.grey_selector));
-		} */
+
 	}
 	
 	public View.OnClickListener drawerEntryClick	=	new View.OnClickListener() {
@@ -122,7 +103,7 @@ public class DrawerFragment extends BaseFragment{
 			
 			switch(v.getId()){
 			
-			case R.id.topusers:
+			case R.id.moves:
 				
 				
 				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -130,39 +111,23 @@ public class DrawerFragment extends BaseFragment{
 				startActivity(intent);
 				break;
 				
-			case R.id.newusers:
+			case R.id.createmove:
 				
 				
-				
-				intent.putExtra("Title", "New Users");
+				intent = new Intent(getActivity(),
+						CreateNewMoveActivity.class);
+				intent.putExtra("Title", "New Move");
 				startActivity(intent);
 				break;
-			case R.id.onlineusers:
+			case R.id.profile:
 				
 				
 				
-				intent.putExtra("Title", "Online Users");
-				startActivity(intent);
-				break;
-				
-			case R.id.memberlookup:
-				
-				intent.putExtra("Title", "Member LookUp");
+				intent.putExtra("Title", "Profile");
 				startActivity(intent);
 				break;
 				
-			case R.id.my_profile:
-				
-				Intent myProfileIntent = new Intent(getActivity(),
-						ProfileActivity.class);
-				myProfileIntent.putExtra("Title", "My Profile");
-				startActivity(myProfileIntent);
-				break;
-				
-			case R.id.photos:
-			case R.id.friends:
-				Toast.makeText(getActivity(), "Not implemented for POC!", 1000).show();
-				break;
+			
 			case R.id.logout:
 				signOutAlert();
 				break;
@@ -178,20 +143,13 @@ public class DrawerFragment extends BaseFragment{
 		
 		my_profile.setBackgroundColor(getResources().getColor(
 				R.color.white_tile_background_color));
-		photos.setBackgroundColor(getResources().getColor(
+		moves.setBackgroundColor(getResources().getColor(
 				R.color.white_tile_background_color));
-		friends.setBackgroundColor(getResources().getColor(
+		createmove.setBackgroundColor(getResources().getColor(
 				R.color.white_tile_background_color));
 		logout.setBackgroundColor(getResources().getColor(
 				R.color.white_tile_background_color));
-		topusers.setBackgroundColor(getResources().getColor(
-				R.color.white_tile_background_color));
-		onlineusers.setBackgroundColor(getResources().getColor(
-				R.color.white_tile_background_color));
-		newusers.setBackgroundColor(getResources().getColor(
-				R.color.white_tile_background_color));
-		memberlookup.setBackgroundColor(getResources().getColor(
-				R.color.white_tile_background_color));
+		
 		
 	}
 	

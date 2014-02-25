@@ -16,11 +16,11 @@
     <string name="Friends">Friends</string>
     <string name="Logout">Logout</string>
     
-    <string name="DiveIn">DIVE IN</string>
-    <string name="TopUsers">Top Users</string>
-    <string name="NewUsers">New Users</string>
-    <string name="OnlineUsers">OnlineUsers</string>
- 	<string name="MemberLookUp">Member LookUp</string>
+    <string name="NextMove">NextMove</string>
+    <string name="Moves">Moves</string>
+    <string name="CreateMove">Create Move</string>
+    <string name="Profile">Profile</string>
+ 	
     <!-- DRAWER END -->
     
     <!-- HEADER ONLINE USERS  -->

@@ -56,18 +56,15 @@
         android:text="Sign In" >
     </Button>
 
-    
-
     <TextView
-     	style="@style/blue_text_view"
+        style="@style/blue_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="40dp"
         android:gravity="center_horizontal"
-        android:text="Dont have an account?"
-	 />
+        android:text="Dont have an account?" />
 
     <Button
         android:id="@+id/signup_btn"
@@ -78,8 +75,7 @@
         android:layout_marginRight="5dp"
         android:background="@drawable/btn_selecton"
         android:gravity="center"
-        android:text="Sign Up"
->
+        android:text="Sign Up" >
     </Button>
 
 </LinearLayout>

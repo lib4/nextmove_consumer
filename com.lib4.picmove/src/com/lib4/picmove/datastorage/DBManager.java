@@ -105,7 +105,7 @@ public class DBManager {
 	
 	
 	 /**
-	 * Fetching all the comments from Comment table.
+	 * Fetching  the Profile
 	 */
 	
 	public Cursor fetchProfile() {
@@ -119,6 +119,23 @@ public class DBManager {
 	}
 
 	
+	
+	 /**
+	 * Fetching all the comments from Comment table.
+	 */
+	
+	public Cursor fetchMoves() {
+		open();
+		String[] allColumns = { sqLiteOpenHelper.COLUMN_MOVEID,sqLiteOpenHelper.COLUMN_SMALLBOX_COUNT,sqLiteOpenHelper.COLUMN_MEDIUMBOX_COUNT,
+				sqLiteOpenHelper.COLUMN_LARGEBOX_COUNT,sqLiteOpenHelper.COLUMN_SOURCE_ADDRESS,sqLiteOpenHelper.COLUMN_DESTINATION_ADDRESS,
+				sqLiteOpenHelper.COLUMN_ROOT_ITEM_IMAGE_URL,sqLiteOpenHelper.COLUMN_NUMBER_OF_BIGITEMS
+				 };
+		Cursor cursor = appSqLiteDatabase.query(AppSqliteHelper.TABLE_MOVES,
+				allColumns, null, null, null, null, null);
+		Log.e("Curson Size ", "== " + cursor.getCount());
+		return cursor;
+	}
+
 	
 
 

@@ -6,6 +6,7 @@ import java.util.Iterator;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -19,6 +20,7 @@ import android.widget.ScrollView;
 
 import com.lib4.picmove.R;
 import com.lib4.picmove.customui.PinterestUI;
+import com.lib4.picmove.datastorage.DBManager;
 import com.lib4.picmove.entity.User;
 import com.lib4.picmove.httphandler.HTTPResponseListener;
 import com.lib4.picmove.httphandler.HttpHandler;
@@ -28,7 +30,6 @@ public class HomeFragment extends BaseFragment implements HTTPResponseListener{
 
 	LinearLayout onlineUsersLayout;
 	PinterestUI mPinterestUI;
-	HashMap<Integer, User> userLists;
 	ScrollView mScrollView;
 	static ProgressDialog mDialog;
 	@Override
@@ -37,17 +38,16 @@ public class HomeFragment extends BaseFragment implements HTTPResponseListener{
 		// Inflate the layout for this fragment
 		onlineUsersLayout = (LinearLayout) inflater.inflate(
 				R.layout.onlineusers_fragment, container, false);
-		trgrGetmoves();
-		userLists	=	Utils.getUserList();
+		//trgrGetmoves();
+		Cursor mCursor	=	new DBManager(getActivity()).fetchMoves();
 		
-		
-		mPinterestUI	=	new PinterestUI(getActivity(),Utils.getUserList());
-		
-		mPinterestUI.createLayout();
-		mScrollView	=new ScrollView(getActivity());
-		mScrollView.addView(mPinterestUI);
-		onlineUsersLayout.addView(mScrollView);
-		
+		if(mCursor!=null&&mCursor.getCount()>0){
+				mPinterestUI	=	new PinterestUI(getActivity(),mCursor);
+				mPinterestUI.createLayout();
+				mScrollView	=new ScrollView(getActivity());
+				mScrollView.addView(mPinterestUI);
+				onlineUsersLayout.addView(mScrollView);
+		}
 		return onlineUsersLayout;
 	}
 	
@@ -56,13 +56,18 @@ public class HomeFragment extends BaseFragment implements HTTPResponseListener{
 	
 	
 	public void resetView(){
-		HashMap<Integer, User> storedHashMap	=	mPinterestUI.data;
+		
 		if(mPinterestUI!=null){
 			mScrollView.removeAllViews();
 		}
-		mPinterestUI	=	new PinterestUI(getActivity(),storedHashMap);
+		Cursor mCursor	=	new DBManager(getActivity()).fetchMoves();
+		if(mCursor!=null&&mCursor.getCount()>0){
+		
+		mPinterestUI	=	new PinterestUI(getActivity(),mCursor);
 		mPinterestUI.createLayout();
 		mScrollView.addView(mPinterestUI);
+		
+		}
 	}
 	
 	public void trgrGetmoves(){

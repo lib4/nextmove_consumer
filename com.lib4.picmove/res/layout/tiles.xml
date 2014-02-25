@@ -6,82 +6,182 @@
     android:background="@color/pane_background_color"
     android:padding="5dp" >
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/lin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/white_tile_background_color"
+        android:orientation="vertical"
+        android:padding="5dp" >
 
-        <LinearLayout
-            android:id="@+id/lin"
+        <ImageView
+            android:id="@+id/itempic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:background="@color/white_tile_background_color"
-            android:orientation="vertical"
-            android:padding="5dp" >
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:background="@drawable/default_profile_pic"
+            android:scaleType="fitXY" />
 
-            <ImageView
-                android:id="@+id/profile_pic"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/bigboxtitle"
+                style="@style/text_view_grey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:adjustViewBounds="false"
-                android:background="@drawable/default_profile_pic"
-                android:scaleType="fitXY" />
-
-            <TextView
-                android:id="@+id/name"
-                style="@style/blue_text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:gravity="left"
-                android:textSize="15sp"
-                android:text="Jeana Cleetus" >
-            </TextView>
-            
-            
-            <TextView
-                android:id="@+id/age"
-                style="@style/blue_text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:gravity="left"
-                android:textSize="15sp"
-                android:text="Age : 20" >
+                android:text="BigBox" >
             </TextView>
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/bigboxcount"
+                style="@style/text_view_grey"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1.0" >
-
-                <TextView
-                    android:id="@+id/status_text"
-                    style="@style/text_view_black"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                   	android:text="Pray that this letter meets you well,though we never meet or seen each other before, but I believe that nature has a way of bringing"
-                    >
-                </TextView>
-		
-        
-        
-            </LinearLayout>
-
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="100" >
+            </TextView>
         </LinearLayout>
 
-      <ImageView
-            android:id="@+id/action_items"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/mediumboxtitle"
+                style="@style/text_view_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MediumBox" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/mediumboxcount"
+                style="@style/text_view_grey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="100" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/smallboxtitle"
+                style="@style/text_view_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BigBox" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/smallboxcount"
+                style="@style/text_view_grey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="100" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/itemRequiresDisassemblytitle"
+                style="@style/text_view_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Disassembly" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/Disassemblycount"
+                style="@style/text_view_grey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="100" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/fitInElevator"
+                style="@style/text_view_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fit It Elevator" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/smallboxcount"
+                style="@style/text_view_grey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="100" >
+            </TextView>
+        </LinearLayout>
+
+        <ImageView 
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/line"/>
+        <TextView
+            android:id="@+id/movefromtitle"
+            style="@style/blue_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/lin"
-            android:layout_margin="2dp"
-            android:background="@drawable/ic_vdots"
-            android:visibility="visible" />
-    </RelativeLayout>
+            android:text="Move From" 
+            android:layout_marginTop="5dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/movefrom"
+            style="@style/text_view_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="California Georgia edededededede" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/movetotitle"
+            style="@style/blue_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Move To" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/moveto"
+            style="@style/text_view_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="India bangalore " >
+        </TextView>
+    </LinearLayout>
 
 </FrameLayout>

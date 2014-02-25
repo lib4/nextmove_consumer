@@ -7,6 +7,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -26,6 +28,9 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.appbase.androidquery.AQuery;
+import com.appbase.androidquery.callback.AjaxStatus;
+import com.appbase.androidquery.callback.BitmapAjaxCallback;
 import com.lib4.picmove.ChatActivity;
 import com.lib4.picmove.ProfileActivity;
 import com.lib4.picmove.R;
@@ -41,19 +46,20 @@ public class PinterestUI extends LinearLayout {
 	LinearLayout NextLayout;
 	int TOTAL_NUM_ITEMS = 10;
 	int ITEM_DRAWN_INDEX = 0;
-	public HashMap<Integer, User> data = null;
-	PopupMenu mPopupMenu;
 
+	PopupMenu mPopupMenu;
+	Cursor mCursor;
 	public PinterestUI(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
 		this.context = context;
 	}
 
-	public PinterestUI(Context context, HashMap<Integer, User> data) {
+	public PinterestUI(Context context, Cursor mCursor) {
 		super(context);
-		this.data = data;
+		
 		this.context = context;
+		this.mCursor	=	mCursor;
 		if (Utils.TILE_VIEW_PREFERENCE) {// 2 column
 
 			NUM_COLUMN = 2;
@@ -61,7 +67,7 @@ public class PinterestUI extends LinearLayout {
 			NUM_COLUMN = 1;
 		}
 
-		TOTAL_NUM_ITEMS = data.size();
+		TOTAL_NUM_ITEMS = mCursor.getCount();
 		setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
 				LayoutParams.FILL_PARENT));
 		WindowManager wm = (WindowManager) context
@@ -99,7 +105,7 @@ public class PinterestUI extends LinearLayout {
 
 	public void createLayout() {
 
-		if (this.data.size() == 0) {
+		if (this.mCursor.getCount() == 0) {
 
 			LinearLayout mLinearLayout = new LinearLayout(context);
 			mLinearLayout.setLayoutParams(new LayoutParams(
@@ -158,25 +164,42 @@ public class PinterestUI extends LinearLayout {
 					null);
 		}
 
-		TextView nameTextView = (TextView) mFrameLayout.findViewById(R.id.name);
+		
 		ImageView profileImage = (ImageView) mFrameLayout
-				.findViewById(R.id.profile_pic);
+				.findViewById(R.id.itempic);
 		TextView statusTextView = (TextView) mFrameLayout
-				.findViewById(R.id.status_text);
+				.findViewById(R.id.address);
 		ImageView actionItems = (ImageView) mFrameLayout
 				.findViewById(R.id.action_items);
 
-		User mUser = data.get(ITEM_DRAWN_INDEX);
-		profileImage.setImageResource(mUser.image);
-		nameTextView.setText(mUser.name);
+		this.mCursor.moveToPosition(ITEM_DRAWN_INDEX);
+		
+		
+		AQuery aq = new AQuery(profileImage);
+		Log.e("URL "," I URL "+this.mCursor.getString(6));
+		aq.id(profileImage).image(this.mCursor.getString(6));
+//		.image(this.mCursor.getString(6),
+//				
+//						true, true, 0, 0, new BitmapAjaxCallback() {
+//							@Override
+//							public void callback(String url, ImageView iv,
+//									Bitmap bm, AjaxStatus status) {
+//								iv.setImageBitmap(bm);
+//								// do something to the bitmap
+//								// iv.setColorFilter(tint,
+//								// PorterDuff.Mode.SRC_ATOP);
+//							}
+//						});
+		
+		//nameTextView.setText(mUser.name);
 
-		actionItems.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				showViewAsMenu(v);
-			}
-		});
+//		actionItems.setOnClickListener(new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				showViewAsMenu(v);
+//			}
+//		});
 
 		mFrameLayout.startAnimation(AnimationUtils.loadAnimation(context,
 				R.anim.scale_alpha));
