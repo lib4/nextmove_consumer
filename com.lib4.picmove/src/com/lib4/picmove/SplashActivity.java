@@ -67,7 +67,7 @@ public class SplashActivity extends Activity {
 			public void run() {
 				// Calling the next Activity.
 				Intent intent = new Intent(SplashActivity.this,
-						SignInActivity.class);
+						CapturePicturesActivity.class);
 				startActivity(intent);
 				finish();
 
@@ -89,7 +89,7 @@ public class SplashActivity extends Activity {
 			public void run() {
 				// Calling the next Activity.
 				Intent intent = new Intent(SplashActivity.this,
-						TutorialActivity.class);
+						CapturePicturesActivity.class);
 				startActivity(intent);
 				finish();
 

@@ -39,7 +39,7 @@
       <!-- SIGNIN END -->
     
     <string name="logut_alert">Do you really want to logout?</string>
-        
+    <string name="snaponlyitem">SNAP ONLY ITEMS THAT DO NOT FIT IN A BOX</string>    
         
         
 </resources>

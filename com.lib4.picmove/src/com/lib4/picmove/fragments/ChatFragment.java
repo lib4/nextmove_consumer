@@ -1,17 +1,11 @@
 package com.lib4.picmove.fragments;
 
-import java.util.List;
-
 import android.os.Bundle;
-import android.provider.ContactsContract.CommonDataKinds.Relation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-
 
 import com.lib4.picmove.R;
 import com.lib4.picmove.adapters.ChatAdapter;

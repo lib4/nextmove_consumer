@@ -31,6 +31,7 @@ public final class R {
         public static final int shadow_color=0x7f050005;
         public static final int subtitle_color=0x7f050003;
         public static final int text_color=0x7f050006;
+        public static final int tranparentolor=0x7f05000c;
         public static final int white_text_color=0x7f05000b;
         public static final int white_tile_background_color=0x7f050002;
     }
@@ -53,101 +54,118 @@ public final class R {
     public static final class drawable {
         public static final int arrow=0x7f020000;
         public static final int btn_selecton=0x7f020001;
-        public static final int default_profile_pic=0x7f020002;
-        public static final int drawer_shadow=0x7f020003;
-        public static final int ic_drawer=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
-        public static final int ic_tick_mark=0x7f020006;
-        public static final int ic_vdots=0x7f020007;
-        public static final int icon_green_dot=0x7f020008;
-        public static final int line=0x7f020009;
-        public static final int logo=0x7f02000a;
-        public static final int selector=0x7f02000b;
-        public static final int splash=0x7f02000c;
-        public static final int transparent_selector=0x7f02000d;
-        public static final int tutorial_bullets_bg=0x7f02000e;
-        public static final int tutorial_number_active=0x7f02000f;
-        public static final int tutorial_number_inactive=0x7f020010;
-        public static final int user0=0x7f020011;
-        public static final int user1=0x7f020012;
-        public static final int user10=0x7f020013;
-        public static final int user11=0x7f020014;
-        public static final int user12=0x7f020015;
-        public static final int user13=0x7f020016;
-        public static final int user14=0x7f020017;
-        public static final int user15=0x7f020018;
-        public static final int user16=0x7f020019;
-        public static final int user17=0x7f02001a;
-        public static final int user18=0x7f02001b;
-        public static final int user19=0x7f02001c;
-        public static final int user2=0x7f02001d;
-        public static final int user3=0x7f02001e;
-        public static final int user4=0x7f02001f;
-        public static final int user5=0x7f020020;
-        public static final int user6=0x7f020021;
-        public static final int user7=0x7f020022;
-        public static final int user8=0x7f020023;
-        public static final int user9=0x7f020024;
+        public static final int capture_icon=0x7f020002;
+        public static final int default_profile_pic=0x7f020003;
+        public static final int drawer_shadow=0x7f020004;
+        public static final int ic_drawer=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
+        public static final int ic_tick_mark=0x7f020007;
+        public static final int ic_vdots=0x7f020008;
+        public static final int icon_green_dot=0x7f020009;
+        public static final int line=0x7f02000a;
+        public static final int logo=0x7f02000b;
+        public static final int selector=0x7f02000c;
+        public static final int splash=0x7f02000d;
+        public static final int transparent_selector=0x7f02000e;
+        public static final int tutorial_bullets_bg=0x7f02000f;
+        public static final int tutorial_number_active=0x7f020010;
+        public static final int tutorial_number_inactive=0x7f020011;
+        public static final int user0=0x7f020012;
+        public static final int user1=0x7f020013;
+        public static final int user10=0x7f020014;
+        public static final int user11=0x7f020015;
+        public static final int user12=0x7f020016;
+        public static final int user13=0x7f020017;
+        public static final int user14=0x7f020018;
+        public static final int user15=0x7f020019;
+        public static final int user16=0x7f02001a;
+        public static final int user17=0x7f02001b;
+        public static final int user18=0x7f02001c;
+        public static final int user19=0x7f02001d;
+        public static final int user2=0x7f02001e;
+        public static final int user3=0x7f02001f;
+        public static final int user4=0x7f020020;
+        public static final int user5=0x7f020021;
+        public static final int user6=0x7f020022;
+        public static final int user7=0x7f020023;
+        public static final int user8=0x7f020024;
+        public static final int user9=0x7f020025;
     }
     public static final class id {
-        public static final int AddAsFriend=0x7f0b0033;
-        public static final int Block=0x7f0b0034;
-        public static final int Chat=0x7f0b0031;
-        public static final int Disassemblycount=0x7f0b0027;
-        public static final int FitInElevator=0x7f0b000b;
-        public static final int Message=0x7f0b0030;
-        public static final int Profile=0x7f0b0032;
-        public static final int Requires Disassembly=0x7f0b000a;
-        public static final int action_items=0x7f0b0015;
-        public static final int action_search=0x7f0b0036;
-        public static final int action_settings=0x7f0b0035;
-        public static final int actions=0x7f0b0037;
-        public static final int address=0x7f0b0014;
-        public static final int background=0x7f0b0018;
-        public static final int bigboxcount=0x7f0b0021;
-        public static final int bigboxtitle=0x7f0b0020;
-        public static final int chat=0x7f0b0004;
-        public static final int createmove=0x7f0b000e;
-        public static final int details=0x7f0b0013;
+        public static final int AddAsFriend=0x7f0b0043;
+        public static final int Block=0x7f0b0044;
+        public static final int Chat=0x7f0b0041;
+        public static final int Disassemblycount=0x7f0b0037;
+        public static final int Message=0x7f0b0040;
+        public static final int Profile=0x7f0b0042;
+        public static final int RequiresDisassembly=0x7f0b0013;
+        public static final int action_items=0x7f0b0025;
+        public static final int action_search=0x7f0b0046;
+        public static final int action_settings=0x7f0b0045;
+        public static final int actions=0x7f0b0047;
+        public static final int address=0x7f0b0024;
+        public static final int background=0x7f0b0028;
+        public static final int bigItems=0x7f0b0010;
+        public static final int bigItemsLabel=0x7f0b0011;
+        public static final int bigboxcount=0x7f0b0031;
+        public static final int bigboxtitle=0x7f0b0030;
+        public static final int camera_preview=0x7f0b0003;
+        public static final int capture_image=0x7f0b0004;
+        public static final int chat=0x7f0b0006;
+        public static final int commentsEdtTxt=0x7f0b001b;
+        public static final int commentsLabel=0x7f0b001a;
+        public static final int createmove=0x7f0b001e;
+        public static final int details=0x7f0b0023;
+        public static final int disassembly=0x7f0b0012;
         public static final int drawer_fragment=0x7f0b0002;
         public static final int drawer_layout=0x7f0b0000;
-        public static final int email_edtTxt=0x7f0b001a;
-        public static final int fitInElevator=0x7f0b0028;
+        public static final int email_edtTxt=0x7f0b002a;
+        public static final int fitInElevator=0x7f0b0038;
+        public static final int fitInElevatorLabel=0x7f0b0015;
+        public static final int fitinElevator=0x7f0b0014;
         public static final int fragment_holder=0x7f0b0001;
-        public static final int getquote_btn=0x7f0b000c;
-        public static final int gotit_btn=0x7f0b002f;
-        public static final int indicatorview=0x7f0b002e;
-        public static final int itemRequiresDisassemblytitle=0x7f0b0026;
-        public static final int itempic=0x7f0b0012;
-        public static final int leftImage=0x7f0b0003;
-        public static final int lin=0x7f0b0016;
-        public static final int listchat=0x7f0b0006;
-        public static final int logout=0x7f0b0010;
-        public static final int mediumboxcount=0x7f0b0023;
-        public static final int mediumboxtitle=0x7f0b0022;
-        public static final int movefrom=0x7f0b002a;
-        public static final int movefromtitle=0x7f0b0029;
-        public static final int moves=0x7f0b000d;
-        public static final int moveto=0x7f0b002c;
-        public static final int movetotitle=0x7f0b002b;
-        public static final int name=0x7f0b0019;
-        public static final int newmessage=0x7f0b0007;
-        public static final int numberPicker1=0x7f0b0009;
-        public static final int parentholder=0x7f0b002d;
-        public static final int password_edtTxt=0x7f0b001b;
-        public static final int phoneNumber=0x7f0b001f;
-        public static final int profile=0x7f0b000f;
-        public static final int profile_pic=0x7f0b0017;
-        public static final int retype_password_edtTxt=0x7f0b001e;
-        public static final int rightImage=0x7f0b0005;
-        public static final int signin_btn=0x7f0b001c;
-        public static final int signup_btn=0x7f0b001d;
-        public static final int smallboxCount =0x7f0b0008;
-        public static final int smallboxcount=0x7f0b0025;
-        public static final int smallboxtitle=0x7f0b0024;
-        public static final int tiles=0x7f0b0011;
-        public static final int view_list=0x7f0b0039;
-        public static final int view_tile=0x7f0b0038;
+        public static final int getquote_btn=0x7f0b001c;
+        public static final int gotit_btn=0x7f0b003f;
+        public static final int indicatorview=0x7f0b003e;
+        public static final int itemRequiresDisassemblytitle=0x7f0b0036;
+        public static final int itempic=0x7f0b0022;
+        public static final int largeboxCountEdtTxt=0x7f0b000f;
+        public static final int largeboxCountLabel=0x7f0b000e;
+        public static final int leftImage=0x7f0b0005;
+        public static final int lin=0x7f0b0026;
+        public static final int listchat=0x7f0b0008;
+        public static final int logout=0x7f0b0020;
+        public static final int mediumboxCountEdtTxt=0x7f0b000d;
+        public static final int mediumboxCountLabel=0x7f0b000c;
+        public static final int mediumboxcount=0x7f0b0033;
+        public static final int mediumboxtitle=0x7f0b0032;
+        public static final int moveFromEdtTxt=0x7f0b0017;
+        public static final int moveFromLabel=0x7f0b0016;
+        public static final int moveToEdtTxt=0x7f0b0019;
+        public static final int moveToLabel=0x7f0b0018;
+        public static final int movefrom=0x7f0b003a;
+        public static final int movefromtitle=0x7f0b0039;
+        public static final int moves=0x7f0b001d;
+        public static final int moveto=0x7f0b003c;
+        public static final int movetotitle=0x7f0b003b;
+        public static final int name=0x7f0b0029;
+        public static final int newmessage=0x7f0b0009;
+        public static final int parentholder=0x7f0b003d;
+        public static final int password_edtTxt=0x7f0b002b;
+        public static final int phoneNumber=0x7f0b002f;
+        public static final int profile=0x7f0b001f;
+        public static final int profile_pic=0x7f0b0027;
+        public static final int retype_password_edtTxt=0x7f0b002e;
+        public static final int rightImage=0x7f0b0007;
+        public static final int signin_btn=0x7f0b002c;
+        public static final int signup_btn=0x7f0b002d;
+        public static final int smallboxCountLabel=0x7f0b000a;
+        public static final int smallboxcount=0x7f0b0035;
+        public static final int smallboxcountEdtTxt=0x7f0b000b;
+        public static final int smallboxtitle=0x7f0b0034;
+        public static final int tiles=0x7f0b0021;
+        public static final int view_list=0x7f0b0049;
+        public static final int view_tile=0x7f0b0048;
     }
     public static final class integer {
         public static final int config_mediumAnimTime=0x7f060000;
@@ -156,20 +174,21 @@ public final class R {
         public static final int activity_main=0x7f030000;
         public static final int base_layout=0x7f030001;
         public static final int base_layout_drawer=0x7f030002;
-        public static final int chat_fragment=0x7f030003;
-        public static final int chat_items=0x7f030004;
-        public static final int chats=0x7f030005;
-        public static final int create_new_move_fragment=0x7f030006;
-        public static final int drawer_fragment=0x7f030007;
-        public static final int item=0x7f030008;
-        public static final int onlineusers_fragment=0x7f030009;
-        public static final int profile_fragment=0x7f03000a;
-        public static final int signin_fragment=0x7f03000b;
-        public static final int signout_fragment=0x7f03000c;
-        public static final int signup_fragment=0x7f03000d;
-        public static final int splash=0x7f03000e;
-        public static final int tiles=0x7f03000f;
-        public static final int tutorial_fragment=0x7f030010;
+        public static final int capturepicture_fragment=0x7f030003;
+        public static final int chat_fragment=0x7f030004;
+        public static final int chat_items=0x7f030005;
+        public static final int chats=0x7f030006;
+        public static final int create_new_move_fragment=0x7f030007;
+        public static final int drawer_fragment=0x7f030008;
+        public static final int item=0x7f030009;
+        public static final int onlineusers_fragment=0x7f03000a;
+        public static final int profile_fragment=0x7f03000b;
+        public static final int signin_fragment=0x7f03000c;
+        public static final int signout_fragment=0x7f03000d;
+        public static final int signup_fragment=0x7f03000e;
+        public static final int splash=0x7f03000f;
+        public static final int tiles=0x7f030010;
+        public static final int tutorial_fragment=0x7f030011;
     }
     public static final class menu {
         public static final int actions_menu=0x7f0a0000;
@@ -209,6 +228,7 @@ public final class R {
         public static final int no_network=0x7f080014;
         public static final int signin=0x7f080016;
         public static final int signup=0x7f080017;
+        public static final int snaponlyitem=0x7f08001a;
         public static final int unable_to_reach=0x7f080015;
         /**  SIGNIN BEGIN 
          */
@@ -272,25 +292,26 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f090001;
-        public static final int CitrineFont_9pt_shadow=0x7f09000d;
+        public static final int CitrineFont_9pt_shadow=0x7f09000e;
         /**  the theme applied to the application or activity 
          */
-        public static final int CustomActionBarTheme=0x7f09000e;
-        public static final int EditTextAppTheme=0x7f090012;
+        public static final int CustomActionBarTheme=0x7f09000f;
+        public static final int EditTextAppTheme=0x7f090013;
         /**  ActionBar styles 
          */
-        public static final int MyActionBar=0x7f09000f;
+        public static final int MyActionBar=0x7f090010;
         /**  ActionBar tabs text styles 
          */
-        public static final int MyActionBarMenuText=0x7f090011;
+        public static final int MyActionBarMenuText=0x7f090012;
         /**  ActionBar title text 
          */
-        public static final int MyActionBarTitleText=0x7f090010;
+        public static final int MyActionBarTitleText=0x7f090011;
         public static final int SubTitleHeader=0x7f090003;
         public static final int TitleHeader=0x7f090002;
-        public static final int blue_text_view=0x7f09000b;
-        public static final int btn=0x7f090008;
-        public static final int header_btn=0x7f090007;
+        public static final int blue_text_view=0x7f09000c;
+        public static final int btn=0x7f090009;
+        public static final int createmove_label=0x7f090006;
+        public static final int header_btn=0x7f090008;
         public static final int list_item=0x7f090004;
         /** 
     <style name="left_arrow" parent="@android:style/TextAppearance">
@@ -311,10 +332,10 @@ public final class R {
 
     
          */
-        public static final int menu_type_title=0x7f090006;
+        public static final int menu_type_title=0x7f090007;
         public static final int right_arrow=0x7f090005;
-        public static final int text_view_black=0x7f090009;
-        public static final int text_view_grey=0x7f09000a;
-        public static final int text_view_white=0x7f09000c;
+        public static final int text_view_black=0x7f09000a;
+        public static final int text_view_grey=0x7f09000b;
+        public static final int text_view_white=0x7f09000d;
     }
 }

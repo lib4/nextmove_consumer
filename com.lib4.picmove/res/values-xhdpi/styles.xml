@@ -55,6 +55,15 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_marginTop">2dp</item>
     </style>
+    
+    
+      <style name="createmove_label" parent="@android:style/TextAppearance.Small.Inverse">
+        <item name="android:textColor">#737778</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:padding">1dp</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
     <!--
     <style name="left_arrow" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/white_tile_background_color</item>
