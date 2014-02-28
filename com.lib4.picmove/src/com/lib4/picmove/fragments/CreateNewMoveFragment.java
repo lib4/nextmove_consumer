@@ -1,5 +1,7 @@
 package com.lib4.picmove.fragments;
 
+import java.util.UUID;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +15,8 @@ import android.widget.ScrollView;
 import com.lib4.picmove.CapturePicturesActivity;
 import com.lib4.picmove.HomeActivity;
 import com.lib4.picmove.R;
+import com.lib4.picmove.RequiresDiassemblyActivity;
+import com.lib4.picmove.utils.Utils;
 
 public class CreateNewMoveFragment extends BaseFragment{
 
@@ -29,6 +33,7 @@ public class CreateNewMoveFragment extends BaseFragment{
 				R.layout.create_new_move_fragment, container, false);
 		
 		init();	
+		Utils.CURRENT_ACTIVE_FOLDER = UUID.randomUUID().toString();
 		return createNewMoveLinearLayout;
 	}
 	
@@ -57,7 +62,7 @@ public class CreateNewMoveFragment extends BaseFragment{
 	
 	
 	OnClickListener clickListener	=	new OnClickListener() {
-		
+		Intent intent;
 		@Override
 		public void onClick(View v) {
 		
@@ -65,12 +70,14 @@ public class CreateNewMoveFragment extends BaseFragment{
 			switch(v.getId()){
 			
 			case R.id.bigItems:
-				Intent intent = new Intent(getActivity(),
+				 intent = new Intent(getActivity(),
 						CapturePicturesActivity.class);
 				startActivity(intent);
 				break;
-			case R.id.RequiresDisassembly:
-				
+			case R.id.disassembly:
+				 intent = new Intent(getActivity(),
+						RequiresDiassemblyActivity.class);
+				startActivity(intent);
 				
 				break;
 			case R.id.fitinElevator:

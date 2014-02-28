@@ -82,7 +82,15 @@
                 <category android:name="android.intent.category.VIEW" />
             </intent-filter>
         </activity>
-        
+           <activity
+            android:name="com.lib4.picmove.RequiresDiassemblyActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.VIEW" />
+            </intent-filter>
+        </activity>
         
     </application>
 

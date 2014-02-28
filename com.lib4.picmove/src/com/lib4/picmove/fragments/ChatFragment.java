@@ -8,7 +8,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.lib4.picmove.R;
-import com.lib4.picmove.adapters.ChatAdapter;
+//import com.lib4.picmove.adapters.GalleryAdapter;
 
 public class ChatFragment extends BaseFragment{
 
@@ -21,9 +21,9 @@ public class ChatFragment extends BaseFragment{
 		chatListLayout = (RelativeLayout) inflater.inflate(
 				R.layout.chats, container, false);
 		
-		ChatAdapter mChatAdapter	=	new ChatAdapter(getActivity());
+		//GalleryAdapter mChatAdapter	=	new GalleryAdapter(getActivity());
 		ListView chatList	=	(ListView) chatListLayout.findViewById(R.id.listchat);
-		chatList.setAdapter(mChatAdapter);
+		//chatList.setAdapter(mChatAdapter);
 		
 		return chatListLayout;
 	}

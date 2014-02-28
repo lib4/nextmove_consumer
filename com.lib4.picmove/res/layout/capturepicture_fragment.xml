@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:weightSum="1.0" >
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1.0" >
+        android:layout_height="0dp"
+        android:layout_weight=".8" >
 
         <FrameLayout
             android:id="@+id/camera_preview"
@@ -40,4 +41,21 @@
             android:src="@drawable/capture_icon"/>
     </RelativeLayout>
 
+    
+      <HorizontalScrollView
+       
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".2" >
+
+        <LinearLayout
+            android:id="@+id/imagecontainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="2dp">
+            
+        </LinearLayout>
+    </HorizontalScrollView>
 </LinearLayout>

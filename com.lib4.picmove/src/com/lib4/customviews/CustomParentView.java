@@ -34,10 +34,13 @@ public class CustomParentView extends FrameLayout{
 	child.startAnimation(animationSlideInLeft);
     }
     
-    
+    public void addViewNoAnim(View child){
+    	super.addView(child);
+    	
+    }
     @Override
     public void removeView (final View child){
-	
+	setClickable(false);
 	animationSlideOutRight.setAnimationListener(new AnimationListener() {
 	    
 	    @Override
@@ -56,6 +59,7 @@ public class CustomParentView extends FrameLayout{
 	    public void onAnimationEnd(Animation animation) {
 		// TODO Auto-generated method stub
 		Remove(child);
+		
 	    }
 	});
 	child.startAnimation(animationSlideOutRight);

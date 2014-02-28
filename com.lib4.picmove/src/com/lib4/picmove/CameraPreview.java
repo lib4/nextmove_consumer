@@ -18,6 +18,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     private Camera mCamera;
     private Camera.Size mPreviewSize;
     private List<Size> mSupportedPreviewSizes;
+    
     public CameraPreview(Context context, Camera camera) {
         super(context);
         mCamera = camera;
@@ -33,20 +34,40 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
     public void surfaceCreated(SurfaceHolder holder) {
         // The Surface has been created, now tell the camera where to draw the preview.
-        try {
-            mCamera.setPreviewDisplay(holder);
-            
-            Camera.Parameters parameters = mCamera.getParameters();
-            parameters.setPreviewSize(mPreviewSize.width, mPreviewSize.height);
-            mCamera.setParameters(parameters);
-            mCamera.startPreview();
-        } catch (IOException e) {
-            Log.d(TAG, "Error setting camera preview: " + e.getMessage());
-        }
+        resetPreview(holder);
+        
     }
 
+    
+    public void resetPreview(SurfaceHolder holder){
+    	
+    	if(holder==null){
+    		
+    		holder	=	getHolder();
+    	}
+    	 try {
+    		 mCamera.setPreviewDisplay(holder);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			  Log.d(TAG, "Error setting camera preview: " + e.getMessage());
+		}
+    	
+         
+         Camera.Parameters parameters = mCamera.getParameters();
+         parameters.setPreviewSize(mPreviewSize.width, mPreviewSize.height);
+         mCamera.setParameters(parameters);
+         mCamera.startPreview();
+    }
     public void surfaceDestroyed(SurfaceHolder holder) {
         // empty. Take care of releasing the Camera preview in your activity.
+    	
+    	if(mCamera!=null){
+    		
+    		Log.e("DESCTOYED ","DESTROYED");
+    		mCamera.stopPreview();
+    		mCamera.release();
+    	}
     }
 
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {

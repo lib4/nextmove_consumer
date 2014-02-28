@@ -20,6 +20,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -46,6 +47,7 @@ public class TutorialFragment extends Fragment {
 	Handler mHandler = new Handler();
 	private Button gotItButton;
 	Timer mTimerTask;
+	private int[] tutorialIds	=	new int[]{R.drawable.tutorial_1,R.drawable.tutorial_2,R.drawable.tutorial_3};
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,12 +68,12 @@ public class TutorialFragment extends Fragment {
 		};
 
 		mFrameLayout.setOnTouchListener(gestureListener);
-
+		
 		showTurialPicSlides();
-
+		AddCustomView(mFrameLayout, 1,false);
 		gotItButton = (Button) mRelativeLayout.findViewById(R.id.gotit_btn);
 		gotItButton.setOnClickListener(gotiItBtnClick);
-		 startAnimation(getActivity());
+		//startAnimation(getActivity());
 		return mRelativeLayout;
 	}
 
@@ -86,34 +88,35 @@ public class TutorialFragment extends Fragment {
 				R.drawable.tutorial_number_inactive);
 		mIndicatorView.setNumberofScreens(TOTAL_NUM_SCREENS);
 		mIndicatorView.switchToScreen(CURRENT_SCREEN, CURRENT_SCREEN);
-
+		
+		
+		
+	
 	}
 
-	private void AddCustomView(FrameLayout mFrameLayout) {
-		View mCustomView = new View(getActivity());
-		Random rnd = new Random();
-		int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256),
-				rnd.nextInt(256));
-		mCustomView.setBackgroundColor(color);
-		mFrameLayout.addView(mCustomView);
+	private void AddCustomView(CustomParentView mFrameLayout,int NextScreen,boolean Anim) {
+		ImageView mCustomView = new ImageView(getActivity());
+		mCustomView.setBackgroundResource(tutorialIds[NextScreen-1]);
+		if(!Anim)
+			mFrameLayout.addViewNoAnim(mCustomView);
+		else
+			mFrameLayout.addView(mCustomView);
 	}
 
-	private void RemoveCustomView(FrameLayout mFrameLayout) {
+	private void RemoveCustomView(CustomParentView mFrameLayout) {
 		int childcount = mFrameLayout.getChildCount();
 		Log.e("child Count", "Get child Count" + childcount);
-		if (childcount > 0)
+		if (childcount > 0){
+		
 			mFrameLayout.removeView(mFrameLayout.getChildAt(childcount - 1));
+		}
 		else {
 			Toast.makeText(getActivity(), "No more views to remove!!",
 					Toast.LENGTH_SHORT).show();
 		}
 	}
 
-	private void RemoveAllCustomView() {
 
-		mFrameLayout.removeAllViews();
-
-	}
 
 	private OnClickListener gotiItBtnClick = new View.OnClickListener() {
 
@@ -171,20 +174,33 @@ public class TutorialFragment extends Fragment {
 	
 	
 	private void leftSwipe(){
-		AddCustomView(mFrameLayout);
+	
 
-		if (CURRENT_SCREEN == TOTAL_NUM_SCREENS) {
-			CURRENT_SCREEN = 0;
-			RemoveAllCustomView();
-		}
-		mIndicatorView.switchToScreen(CURRENT_SCREEN,
-				getScreenNumberIncrement());
+		Log.e("CURRENT SCREEN"+CURRENT_SCREEN ," NEXT SCREEN ");
+		
+		int currentScreen	=	CURRENT_SCREEN;
+		int NextScreen	=	getScreenNumberIncrement();
+		
+		
+		Log.e("CURRENT SCREEN"+CURRENT_SCREEN ," NEXT SCREEN "+NextScreen);
+		mIndicatorView.switchToScreen(currentScreen,NextScreen);
+		if(currentScreen!=NextScreen)
+			AddCustomView(mFrameLayout,NextScreen,true);
 		
 	}
 	private void rightSwipe(){
-		RemoveCustomView(mFrameLayout);
-		mIndicatorView.switchToScreen(CURRENT_SCREEN,
-				getScreenNumberDecrement());
+	
+		
+		
+		int currentScreen	=	CURRENT_SCREEN;
+		int NextScreen	=	getScreenNumberDecrement();
+		
+		
+		mIndicatorView.switchToScreen(currentScreen,
+				NextScreen);
+		
+		if(currentScreen!=NextScreen)
+			RemoveCustomView(mFrameLayout);
 	}
 	
 	private int getScreenNumberIncrement() {

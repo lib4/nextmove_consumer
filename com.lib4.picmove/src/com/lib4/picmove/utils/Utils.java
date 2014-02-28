@@ -20,9 +20,11 @@ public class Utils {
 	public static boolean IS_TABLET	=	false;
 	public static String  	MOVES_HEADER =	"Moves";	
 	public static String  	ONLINE_USERS_HEADER =	"Online Users";	
+	public static String  	REQUIRES_DIASSEBLY =	"Diassembly";	
 	public static boolean TILE_VIEW_PREFERENCE		=	true;
 	public static String USERNAME = "anaschaky@gmail.com";
 	public static String PASSWORD = "12345678";
+	public static String CURRENT_ACTIVE_FOLDER	=	"";
 	
 	
 	public static boolean isTabletDevice(Context activityContext) {
@@ -58,11 +60,6 @@ public class Utils {
 		
 	};
 	
-	public static int[] images = new int[]{
-		
-		R.drawable.user0,R.drawable.user1,R.drawable.user2,R.drawable.user3,R.drawable.user4,R.drawable.user5,R.drawable.user6,R.drawable.user7,R.drawable.user8,R.drawable.user9,
-		R.drawable.user10,R.drawable.user11,R.drawable.user12,R.drawable.user13,R.drawable.user14,R.drawable.user15,R.drawable.user16,R.drawable.user17,R.drawable.user18,R.drawable.user19
-	};
 	
 	
 	public static void showNoNetworkAlertDialog(final Context mContext) {
@@ -111,20 +108,4 @@ public class Utils {
 	}
 
 	
-	public static HashMap<Integer, User> getUserList(){
-		if(USERS_LIST.isEmpty()){
-		for(int i =0;i<20;i++){
-			
-			User mUser	=	new User();
-			mUser.name	=	Names[i];
-			mUser.image	=	images[i];
-			mUser.age	=	20+i;
-			
-			USERS_LIST.put(i, mUser);
-		}
-		
-		
-		}
-		return USERS_LIST;
-	}
 }
