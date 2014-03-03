@@ -177,6 +177,15 @@ public class BaseActivity extends Activity
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
+		
+		
+		 if (savedInstanceState != null && savedInstanceState.get("CapturePicturesActivity") != null){
+			 
+		 }
+		 else { mDrawerToggle.syncState(); 
+		 }
+		 
+		
 		// if (!Utils.IS_TABLET) {
 		// Sync the toggle state after onRestoreInstanceState has occurred.
 		/*
@@ -189,7 +198,7 @@ public class BaseActivity extends Activity
 		 * 
 		 * } else { mDrawerToggle.syncState(); }
 		 */
-		mDrawerToggle.syncState();
+		//mDrawerToggle.syncState();
 		// }
 	}
 

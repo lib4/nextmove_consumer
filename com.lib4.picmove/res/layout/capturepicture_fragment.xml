@@ -54,8 +54,23 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="2dp">
+            android:layout_margin="2dp">
             
         </LinearLayout>
     </HorizontalScrollView>
+    
+      <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@color/black" >
+
+            <TextView
+                style="@style/text_view_white"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/taphold"
+                android:textStyle="bold" />
+        </LinearLayout>
 </LinearLayout>

@@ -5,7 +5,31 @@
     android:background="@color/pane_background_color"
     android:orientation="vertical" >
 
+    <LinearLayout
+        android:id="@+id/emptyMoves"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        
+        "
 
-
+        <ImageView
+            android:id="@+id/createmove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_launcher" />
+        
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:gravity="center"
+            android:text="@string/tapicon"/>
+    </LinearLayout>
 
 </LinearLayout>

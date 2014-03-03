@@ -15,31 +15,32 @@
     <string name="Messages">Messages</string>
     <string name="Friends">Friends</string>
     <string name="Logout">Logout</string>
-    
     <string name="NextMove">NextMove</string>
     <string name="Moves">Moves</string>
     <string name="CreateMove">Create Move</string>
     <string name="Profile">Profile</string>
- 	
+
     <!-- DRAWER END -->
-    
-    <!-- HEADER ONLINE USERS  -->
+
+
+    <!-- HEADER ONLINE USERS -->
     <string name="ActionSearch">Search</string>
     <string name="DisplayOption">View As</string>
     <string name="ViewAsTile">View As Tile</string>
     <string name="ViewAsList">View As List</string>
-    
+
     <!-- SIGNIN BEGIN -->
-  	 <string name="uname_not_matching">Authorization Required. Invalid email/password combination.</string>
-  	   <string name="no_network"></string>
-  	   <string name="unable_to_reach">Server is temperorily not available. Please try after some time.</string>
-  	  <string name="signin">SignIn...</string>
-  	   <string name="signup">SignUp...</string>
-  	   <string name="getmoves">Getting Moves...</string>
-      <!-- SIGNIN END -->
-    
+    <string name="uname_not_matching">Authorization Required. Invalid email/password combination.</string>
+    <string name="no_network"></string>
+    <string name="unable_to_reach">Server is temperorily not available. Please try after some time.</string>
+    <string name="signin">SignIn...</string>
+    <string name="signup">SignUp...</string>
+    <string name="getmoves">Getting Moves...</string>
+    <!-- SIGNIN END -->
+
     <string name="logut_alert">Do you really want to logout?</string>
-    <string name="snaponlyitem">SNAP ONLY ITEMS THAT DO NOT FIT IN A BOX</string>    
-        
-        
+    <string name="snaponlyitem">SNAP ONLY ITEMS THAT DO NOT FIT IN A BOX</string>
+    <string name="taphold">TAP AND HOLD THE ITEM TO VIEW THE OPTIONS</string>
+     <string name="tapicon">TAP ON ICON TO CREATE NEW MOVE</string>
+
 </resources>

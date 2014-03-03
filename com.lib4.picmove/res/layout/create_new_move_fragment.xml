@@ -106,10 +106,19 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_weight=".8"
+                android:layout_weight=".7"
                 android:text="Big Items Wont Fit In a box " >
             </TextView>
 
+              <TextView
+                android:id="@+id/bigItemsCount"
+                style="@style/createmove_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight=".1"
+                android:text="0" >
+            </TextView>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -133,10 +142,19 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_weight=".8"
+                android:layout_weight=".7"
                 android:text="Requires Disassembly" >
             </TextView>
 
+             <TextView
+                android:id="@+id/requiresDiassemblyCount"
+                style="@style/createmove_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight=".1"
+                android:text="0" >
+            </TextView>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -160,10 +178,19 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_weight=".8"
+                android:layout_weight=".7"
                 android:text="Fit In Elevator" >
             </TextView>
 
+                <TextView
+                android:id="@+id/fitInElevatorCount"
+                style="@style/createmove_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight=".1"
+                android:text="0" >
+            </TextView>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

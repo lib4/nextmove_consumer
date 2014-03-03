@@ -12,21 +12,23 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 
 import com.lib4.picmove.R;
-import com.lib4.picmove.entity.User;
+import com.lib4.picmove.entity.ItemProperty;
+
 
 public class Utils {
 
 	
 	public static boolean IS_TABLET	=	false;
 	public static String  	MOVES_HEADER =	"Moves";	
-	public static String  	ONLINE_USERS_HEADER =	"Online Users";	
-	public static String  	REQUIRES_DIASSEBLY =	"Diassembly";	
+	public static String  	REQUIRES_DIASSEBLY =	"Items Needed Diassembly";	
+	public static String  	FITIN_ELEVATOR =	"Items Does Not Fit In Elevator";
 	public static boolean TILE_VIEW_PREFERENCE		=	true;
 	public static String USERNAME = "anaschaky@gmail.com";
 	public static String PASSWORD = "12345678";
 	public static String CURRENT_ACTIVE_FOLDER	=	"";
+	public static HashMap<String, ItemProperty> Items	=	new HashMap<String, ItemProperty>();
 	
-	
+	public static String userId		=	"38bdceac-1289-4b2c-95b7-9e7572c4dc6c";
 	public static boolean isTabletDevice(Context activityContext) {
         boolean device_large = ((activityContext.getResources().getConfiguration().screenLayout &
                 Configuration.SCREENLAYOUT_SIZE_MASK) ==
@@ -51,14 +53,6 @@ public class Utils {
     }
 	
 	
-	
-	public static HashMap<Integer, User> USERS_LIST	=	new HashMap<Integer, User>();
-	
-	public static String[] Names = new String[]{
-		"Jame Miller","Pual collin","Freddy Albert","Dsouza Jani","Keane Fabre","Robert Wilinkin","Dave Mat", "Prio taba","Oool Mitha","Sean Kore",
-		"Fame Jack","Camlin dcrouz","albert wellin","Tom san","Phili luois","Doly Methey","Sara Jon", "Elina Taog","Meetu Kaniya","Mexza love"
-		
-	};
 	
 	
 	

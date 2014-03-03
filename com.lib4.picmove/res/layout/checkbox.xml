@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" 
+    android:background="@color/black"
+    android:orientation="vertical">
+
+    <CheckBox
+        android:id="@+id/requiresdiassebly_chkbox"
+        style="@style/text_view_white"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Requires Diassembly"
+        android:textSize="20dp"
+        android:layout_margin="5dp" />
+    
+    <CheckBox
+        android:id="@+id/fitinelevator_chkbox"
+        style="@style/text_view_white"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Fit In elevator"
+        android:textSize="20dp"
+        android:layout_margin="5dp" />
+    
+    
+    <Button
+        android:id="@+id/delete_btn"
+        style="@style/btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/btn_selecton"
+        android:gravity="center"
+        android:text="Remove Item" >
+    </Button>
+
+</LinearLayout>

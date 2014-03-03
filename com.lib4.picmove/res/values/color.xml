@@ -13,5 +13,6 @@
       <color name="button_background_color">#5CAD49</color>
       <color name="white_text_color">#FFFFFF</color>
       <color name="tranparentolor">#88707070</color>
+        <color name="black">#88000000</color>
       
 </resources>

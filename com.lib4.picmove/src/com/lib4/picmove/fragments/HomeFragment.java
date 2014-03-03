@@ -21,7 +21,7 @@ import android.widget.ScrollView;
 import com.lib4.picmove.R;
 import com.lib4.picmove.customui.PinterestUI;
 import com.lib4.picmove.datastorage.DBManager;
-import com.lib4.picmove.entity.User;
+import com.lib4.picmove.entity.ItemProperty;
 import com.lib4.picmove.httphandler.HTTPResponseListener;
 import com.lib4.picmove.httphandler.HttpHandler;
 import com.lib4.picmove.utils.Utils;
@@ -47,6 +47,10 @@ public class HomeFragment extends BaseFragment implements HTTPResponseListener{
 				mScrollView	=new ScrollView(getActivity());
 				mScrollView.addView(mPinterestUI);
 				onlineUsersLayout.addView(mScrollView);
+		}else{
+			
+			
+			
 		}
 		return onlineUsersLayout;
 	}

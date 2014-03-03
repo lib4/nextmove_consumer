@@ -34,7 +34,7 @@ import com.appbase.androidquery.callback.BitmapAjaxCallback;
 import com.lib4.picmove.ChatActivity;
 import com.lib4.picmove.ProfileActivity;
 import com.lib4.picmove.R;
-import com.lib4.picmove.entity.User;
+import com.lib4.picmove.entity.ItemProperty;
 import com.lib4.picmove.utils.Utils;
 
 public class PinterestUI extends LinearLayout {
@@ -160,7 +160,7 @@ public class PinterestUI extends LinearLayout {
 					R.layout.tiles, null);
 		} else {
 
-			mFrameLayout = (FrameLayout) mLayoutInflater.inflate(R.layout.item,
+			mFrameLayout = (FrameLayout) mLayoutInflater.inflate(R.layout.grid_item,
 					null);
 		}
 
@@ -169,8 +169,7 @@ public class PinterestUI extends LinearLayout {
 				.findViewById(R.id.itempic);
 		TextView statusTextView = (TextView) mFrameLayout
 				.findViewById(R.id.address);
-		ImageView actionItems = (ImageView) mFrameLayout
-				.findViewById(R.id.action_items);
+		
 
 		this.mCursor.moveToPosition(ITEM_DRAWN_INDEX);
 		
