@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,9 @@ public class DrawerFragment extends BaseFragment{
 	}
 	
 	
+	public void onResume(){
+		super.onResume();
+	}
 	
 	
 	
@@ -67,6 +71,9 @@ public class DrawerFragment extends BaseFragment{
 		
 		
 		String title 	=	getActivity().getIntent().getStringExtra("Title");
+		
+		
+		Log.e("TITLE "," "+title);
 		if(title==null){
 			logout.setBackgroundColor(getResources().getColor(
 					R.color.grey_selector));

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pane_background_color" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white_tile_background_color"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:weightSum="1.0" >
+
+            <TextView
+                android:id="@+id/smallboxCountLabel"
+                style="@style/createmove_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight=".7"
+                android:text="Small box Count " >
+            </TextView>
+
+            <TextView
+                style="@style/createmove_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight=".1"
+                android:text="10 " >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@color/white_tile_background_color"
+            android:padding="5dp"
+            android:weightSum="1.0" >
+
+            <TextView
+                android:id="@+id/mediumboxCountLabel"
+                style="@style/createmove_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight=".7"
+                android:text="Medium box Count " >
+            </TextView>
+
+            <TextView
+                style="@style/createmove_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight=".1"
+                android:text="10 " >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@color/white_tile_background_color"
+            android:padding="5dp"
+            android:weightSum="1.0" >
+
+            <TextView
+                android:id="@+id/largeboxCountLabel"
+                style="@style/createmove_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight=".7"
+                android:text="Large box Count " >
+            </TextView>
+
+            <TextView
+                style="@style/createmove_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight=".1"
+                android:text="10 " >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@color/white_tile_background_color"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@color/white_tile_background_color"
+                android:padding="5dp"
+                android:weightSum="1.0" >
+
+                <TextView
+                    style="@style/createmove_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight=".7"
+                    android:text="Big Items " >
+                </TextView>
+
+                <TextView
+                    style="@style/createmove_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight=".1"
+                    android:text="10 " >
+                </TextView>
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:id="@+id/bigItemsScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <include layout="@layout/grid_item" />
+
+                    <include layout="@layout/grid_item" />
+
+                    <include layout="@layout/grid_item" />
+
+                    <include layout="@layout/grid_item" />
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@color/white_tile_background_color"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@color/white_tile_background_color"
+                android:padding="5dp"
+                android:weightSum="1.0" >
+
+                <TextView
+                    style="@style/createmove_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight=".7"
+                    android:text="Item Requires Diassembly " >
+                </TextView>
+
+                <TextView
+                    style="@style/createmove_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight=".1"
+                    android:text="10 " >
+                </TextView>
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:id="@+id/bigItemsScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <include layout="@layout/grid_item" />
+
+                    <include layout="@layout/grid_item" />
+
+                    <include layout="@layout/grid_item" />
+
+                    <include layout="@layout/grid_item" />
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@color/white_tile_background_color"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@color/white_tile_background_color"
+                android:padding="5dp"
+                android:weightSum="1.0" >
+
+                <TextView
+                    style="@style/createmove_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight=".7"
+                    android:text="Item Wont Fit In Elevator" >
+                </TextView>
+
+                <TextView
+                    style="@style/createmove_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight=".1"
+                    android:text="10 " >
+                </TextView>
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:id="@+id/bigItemsScrollView"
+                
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <include layout="@layout/grid_item" />
+
+                    <include layout="@layout/grid_item" />
+
+                    <include layout="@layout/grid_item" />
+
+                    <include layout="@layout/grid_item" />
+
+                    <include layout="@layout/grid_item" />
+
+                    <include layout="@layout/grid_item" />
+
+                    <include layout="@layout/grid_item" />
+
+                    <include layout="@layout/grid_item" />
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

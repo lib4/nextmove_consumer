@@ -32,6 +32,8 @@ import com.appbase.androidquery.AQuery;
 import com.appbase.androidquery.callback.AjaxStatus;
 import com.appbase.androidquery.callback.BitmapAjaxCallback;
 import com.lib4.picmove.ChatActivity;
+import com.lib4.picmove.CreateNewMoveActivity;
+import com.lib4.picmove.MoveDetailsActivity;
 import com.lib4.picmove.ProfileActivity;
 import com.lib4.picmove.R;
 import com.lib4.picmove.entity.ItemProperty;
@@ -177,33 +179,26 @@ public class PinterestUI extends LinearLayout {
 		AQuery aq = new AQuery(profileImage);
 		Log.e("URL "," I URL "+this.mCursor.getString(6));
 		aq.id(profileImage).image(this.mCursor.getString(6));
-//		.image(this.mCursor.getString(6),
-//				
-//						true, true, 0, 0, new BitmapAjaxCallback() {
-//							@Override
-//							public void callback(String url, ImageView iv,
-//									Bitmap bm, AjaxStatus status) {
-//								iv.setImageBitmap(bm);
-//								// do something to the bitmap
-//								// iv.setColorFilter(tint,
-//								// PorterDuff.Mode.SRC_ATOP);
-//							}
-//						});
-		
-		//nameTextView.setText(mUser.name);
-
-//		actionItems.setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				showViewAsMenu(v);
-//			}
-//		});
-
 		mFrameLayout.startAnimation(AnimationUtils.loadAnimation(context,
 				R.anim.scale_alpha));
 
+		mFrameLayout.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+			
+				gotoDetails();
+			}
+		});
 		NextLayout.addView(mFrameLayout);
+	}
+	
+	private void gotoDetails(){
+
+		Intent intent = new Intent(context,
+				MoveDetailsActivity.class);
+		intent.putExtra("Title", "Move Details");
+		context.startActivity(intent);
 	}
 
 	private void showViewAsMenu(View mView) {
