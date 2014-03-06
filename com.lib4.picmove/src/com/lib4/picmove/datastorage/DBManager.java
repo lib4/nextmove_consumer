@@ -10,9 +10,9 @@ import android.util.Log;
 
 public class DBManager {
 
-	private AppSqliteHelper sqLiteOpenHelper; // SQLITE Helper instance
+	public static AppSqliteHelper sqLiteOpenHelper; // SQLITE Helper instance
 
-	private SQLiteDatabase appSqLiteDatabase; // Database instance
+	public static SQLiteDatabase appSqLiteDatabase; // Database instance
 
 	/**
 	 * Constructor initializes the Sqlitehelper
@@ -32,13 +32,21 @@ public class DBManager {
 	 */
 	public void open() throws SQLException {
 		try {
-			appSqLiteDatabase = sqLiteOpenHelper.getWritableDatabase();
-			Uri mUril = Uri.parse(appSqLiteDatabase.getPath());
-			Log.e("URI ", "" + mUril.toString());
+				if(appSqLiteDatabase==null)
+					appSqLiteDatabase = sqLiteOpenHelper.getWritableDatabase();
+				
+				
+				
+				Uri mUril = Uri.parse(appSqLiteDatabase.getPath());
+				Log.e("URI ", "" + mUril.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+
 
 	/**
 	 * Method closes the database.
@@ -73,6 +81,17 @@ public class DBManager {
 
 	}
 	
+	/**
+	 * Remove all Table rows 
+	 */
+	public void removeMoves() {
+		open();
+		appSqLiteDatabase.delete(sqLiteOpenHelper.TABLE_MOVES, null, null);
+		appSqLiteDatabase.delete(sqLiteOpenHelper.TABLE_BIGITEMS, null, null);
+		
+		close();
+
+	}
 	
 	
 	/**
@@ -130,14 +149,54 @@ public class DBManager {
 				sqLiteOpenHelper.COLUMN_LARGEBOX_COUNT,sqLiteOpenHelper.COLUMN_SOURCE_ADDRESS,sqLiteOpenHelper.COLUMN_DESTINATION_ADDRESS,
 				sqLiteOpenHelper.COLUMN_ROOT_ITEM_IMAGE_URL,sqLiteOpenHelper.COLUMN_NUMBER_OF_BIGITEMS
 				 };
+	
 		Cursor cursor = appSqLiteDatabase.query(AppSqliteHelper.TABLE_MOVES,
 				allColumns, null, null, null, null, null);
 		Log.e("Curson Size ", "== " + cursor.getCount());
+		
 		return cursor;
 	}
 
 	
 
+	
+	 /**
+	 * Fetching all the comments from Comment table.
+	 */
+	
+	public Cursor fetchMove(String moveId) {
+		//openDatabaseRead();
+		open();
+		String[] allColumns = { sqLiteOpenHelper.COLUMN_MOVEID,sqLiteOpenHelper.COLUMN_SMALLBOX_COUNT,sqLiteOpenHelper.COLUMN_MEDIUMBOX_COUNT,
+				sqLiteOpenHelper.COLUMN_LARGEBOX_COUNT,sqLiteOpenHelper.COLUMN_SOURCE_ADDRESS,sqLiteOpenHelper.COLUMN_DESTINATION_ADDRESS,
+				sqLiteOpenHelper.COLUMN_ROOT_ITEM_IMAGE_URL,sqLiteOpenHelper.COLUMN_NUMBER_OF_BIGITEMS
+				 };
+		
+		Cursor cursor = appSqLiteDatabase.query(AppSqliteHelper.TABLE_MOVES,
+				allColumns,sqLiteOpenHelper.COLUMN_MOVEID +"=?",  new String[] {moveId}, null, null, null);
+		Log.e("Curson Size ", "== " + cursor.getCount());
+		
+		return cursor;
+	}
+
+	 /**
+		 * Fetching all the comments from Comment table.
+		 */
+		
+		public Cursor fetchBigItems(String moveId) {
+			//openDatabaseRead();
+			open();
+			String[] allColumns = { sqLiteOpenHelper.COLUMN_MOVEID,sqLiteOpenHelper.COLUMN_SMALLBOX_COUNT,sqLiteOpenHelper.COLUMN_MEDIUMBOX_COUNT,
+					sqLiteOpenHelper.COLUMN_LARGEBOX_COUNT,sqLiteOpenHelper.COLUMN_SOURCE_ADDRESS,sqLiteOpenHelper.COLUMN_DESTINATION_ADDRESS,
+					sqLiteOpenHelper.COLUMN_ROOT_ITEM_IMAGE_URL,sqLiteOpenHelper.COLUMN_NUMBER_OF_BIGITEMS
+					 };
+			
+			Cursor cursor = appSqLiteDatabase.query(AppSqliteHelper.TABLE_BIGITEMS,
+					null,sqLiteOpenHelper.COLUMN_MOVEID +"=?",  new String[] {moveId}, null, null, null);
+			Log.e("Curson Size ", "== " + cursor.getCount());
+			
+			return cursor;
+		}
 
 	public void startTransaction() {
 		open();

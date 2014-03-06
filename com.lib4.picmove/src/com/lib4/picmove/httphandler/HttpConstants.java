@@ -63,7 +63,7 @@ public class HttpConstants {
 	public static final String MMOVIEID_JKEY	=	"moveId";
 	public static final String PRICE_QUOTE_JKEY	=	"priceQuote";
 	public static final String MEDIUMBOX_COUNT_JKEY	=	"mediumBoxCount";
-	
+	public static final String ITEMWONTFITBOX_COUNT_JKEY	=	"itemWontFitInBox";
 	public static final String SOURCEADDRESS_JKEY	=	"sourceAddress";
 	public static final String FITIN_ELEVATOR_JKEY	=	"fitInElevator";
 	public static final String DISASSEMBLY_JKEY	=	"disassembly";

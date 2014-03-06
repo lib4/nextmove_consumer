@@ -111,7 +111,7 @@ public class SignUpFragment extends BaseFragment implements
 	}
 
 	@Override
-	public void onSuccess() {
+	public void onSuccess(String message) {
 		dismissDialoge();
 		// Calling the next Activity.
 		Intent intent = new Intent(getActivity(), HomeActivity.class);

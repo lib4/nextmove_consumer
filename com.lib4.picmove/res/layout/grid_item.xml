@@ -3,8 +3,8 @@
     android:id="@+id/tiles"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="1dp"
-    android:background="@color/pane_background_color" >
+    android:padding="5dp"
+    android:background="@color/white_tile_background_color" >
 
     <ImageView
         android:id="@+id/itempic"

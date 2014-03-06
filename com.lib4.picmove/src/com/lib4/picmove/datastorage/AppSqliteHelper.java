@@ -37,6 +37,7 @@ public class AppSqliteHelper extends SQLiteOpenHelper {
 	public static final String COLUMN_REJECTREASON = "rejectReason";
 	public static final String COLUMN_DISPATCH_DATE = "dispatchDate";
 	public static final String COLUMN_BIGITEM_PRESENT = "isBigItemsPresent";
+	public static final String COLUMN_ITEMWONTFITBOX_COUNT = "itemWontFitInBox";
 	public static final String COLUMN_MOVE_STATUS = "moveStatus";
 	public static final String COLUMN_CONDITIONS = "conditions";
 	public static final String COLUMN_PRICE_QUOTE = "priceQuote";
@@ -98,6 +99,7 @@ public class AppSqliteHelper extends SQLiteOpenHelper {
 			+ "(auto_id integer primary key autoincrement," + COLUMN_BIGITEM_ID
 			+ " text not null," + 
 			COLUMN_ITEM_NAME + " text, " + 
+			COLUMN_MOVEID + " text, " + 
 			COLUMN_ITEM_DESCRIPTION + " text, " +
 			COLUMN_ITEM_URL + " text ," +
 			COLUMN_REQUIRES_DISASSEMBLY + " boolean not null default 0 ," +

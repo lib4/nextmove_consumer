@@ -1,6 +1,7 @@
 package com.lib4.picmove.httphandler;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 
@@ -13,10 +14,12 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
+import com.lib4.picmove.datahandler.CreateNewMoveParser;
 import com.lib4.picmove.datahandler.GetMyMovesParser;
 import com.lib4.picmove.datahandler.SignInParser;
 import com.lib4.picmove.datahandler.SignUpParser;
 import com.lib4.picmove.network.Connection;
+import com.lib4.picmove.network.MultipartConnection;
 import com.lib4.picmove.utils.Utils;
 
 public class HttpHandler extends Thread {
@@ -297,6 +300,58 @@ public class HttpHandler extends Thread {
 	 * parser class. 3.Trigger the UI events
 	 */
 	public void run() {
+		if(REQUEST_API_CODE==CREATE_MOVE_API_CODE){
+			
+			
+			MultipartConnection multipartConnection	=	new MultipartConnection();
+			try {
+				multipartConnection.connect(URL,requestBody);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				// Exception will be handled based on response code obtained.
+				mHttpResponseListener.onFailure(UNABLE_TO_REACH_SERVER, UANBLETOREEACHSERVER);
+				return;
+			}
+			
+			switch (multipartConnection.responseCode) {
+			case 200:
+
+				CreateNewMoveParser mCreateNewMoveParser = new CreateNewMoveParser(
+						multipartConnection.responseString, context);
+
+				if (mHttpResponseListener != null) {
+
+					if (mCreateNewMoveParser.isSuccess)
+						mHttpResponseListener.onSuccess(mCreateNewMoveParser.message);
+					else
+						mHttpResponseListener.onFailure(DEFAULT_CODE,
+								mCreateNewMoveParser.message);
+
+				}
+			
+				break;
+
+			default:
+				mHttpResponseListener.onFailure(DEFAULT_CODE,"");
+				break;
+			}
+
+			return;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		if (!isNetworkOnline()) {
 			mHttpResponseListener.onFailure(NO_NETWORK_CODE, NONETWORK);
 			return;
@@ -315,10 +370,7 @@ public class HttpHandler extends Thread {
 			switch (REQUEST_API_CODE) {
 
 			case SIGNUP_API_CODE:
-			case 200:
-
-				Log.e("RESONSE CODE ","RESPONSE CODE "+mConnection.responseCode);
-				switch (mConnection.responseCode) {
+			switch (mConnection.responseCode) {
 				case 200:
 					SignUpParser mSignUpParser = new SignUpParser(
 							mConnection.responseStream, context);
@@ -326,7 +378,7 @@ public class HttpHandler extends Thread {
 					if (mHttpResponseListener != null) {
 
 						if (mSignUpParser.isSuccess)
-							mHttpResponseListener.onSuccess();
+							mHttpResponseListener.onSuccess(null);
 						else
 							mHttpResponseListener.onFailure(DEFAULT_CODE,
 									mSignUpParser.message);
@@ -354,7 +406,7 @@ public class HttpHandler extends Thread {
 					if (mHttpResponseListener != null) {
 
 						if (mSignInParser.isSuccess)
-							mHttpResponseListener.onSuccess();
+							mHttpResponseListener.onSuccess(null);
 						else
 							mHttpResponseListener.onFailure(DEFAULT_CODE,
 									mSignInParser.message);
@@ -381,7 +433,7 @@ public class HttpHandler extends Thread {
 					if (mHttpResponseListener != null) {
 
 						if (mGetMyMovesParser.isSuccess)
-							mHttpResponseListener.onSuccess();
+							mHttpResponseListener.onSuccess(null);
 						else
 							mHttpResponseListener.onFailure(DEFAULT_CODE,
 									mGetMyMovesParser.message);
@@ -395,18 +447,7 @@ public class HttpHandler extends Thread {
 					break;
 				}
 
-			case CREATE_MOVE_API_CODE:
-				switch (mConnection.responseCode) {
-				case 200:
-
-					serverResponeAsString(mConnection);
-					break;
-
-				default:
-					mHttpResponseListener.onFailure(DEFAULT_CODE,"");
-					break;
-				}
-
+	
 				break;
 
 			case UPDATE_PROFILE_API_CODE:

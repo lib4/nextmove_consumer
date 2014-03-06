@@ -24,7 +24,7 @@ import com.lib4.picmove.httphandler.HTTPResponseListener;
 import com.lib4.picmove.httphandler.HttpHandler;
 import com.lib4.picmove.utils.Utils;
 
-public class HomeFragment extends BaseFragment implements HTTPResponseListener{
+public class HomeFragment extends BaseFragment implements HTTPResponseListener {
 
 	LinearLayout movesLayout;
 	PinterestUI mPinterestUI;
@@ -32,45 +32,43 @@ public class HomeFragment extends BaseFragment implements HTTPResponseListener{
 	static ProgressDialog mDialog;
 	ImageView nextmoveIcon;
 	LinearLayout emptyMoves;
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		movesLayout = (LinearLayout) inflater.inflate(
-				R.layout.home_fragment, container, false);
-		emptyMoves	=	(LinearLayout) movesLayout.findViewById(R.id.emptyMoves);
-		mScrollView	=new ScrollView(getActivity());
+		movesLayout = (LinearLayout) inflater.inflate(R.layout.home_fragment,
+				container, false);
+		emptyMoves = (LinearLayout) movesLayout.findViewById(R.id.emptyMoves);
+		mScrollView = new ScrollView(getActivity());
+		movesLayout.addView(mScrollView);
 		//trgrGetmoves();
-		
+
 		return movesLayout;
 	}
-	
-	
-	
+
 	@Override
-	public void onResume(){
+	public void onResume() {
 		super.onResume();
-		
-		trgrGetmoves();
-	
-		Cursor mCursor	=	new DBManager(getActivity()).fetchMoves();
-		
-		if(mCursor!=null&&mCursor.getCount()>0){
-				mPinterestUI	=	new PinterestUI(getActivity(),mCursor);
-				mPinterestUI.createLayout();
-				
-				mScrollView.addView(mPinterestUI);
-				movesLayout.addView(mScrollView);
-				
-				emptyMoves.setVisibility(View.GONE);
-		}else{
-			
+
+		 trgrGetmoves();
+
+		Cursor mCursor = new DBManager(getActivity()).fetchMoves();
+
+		if (mCursor != null && mCursor.getCount() > 0) {
+			mPinterestUI = new PinterestUI(getActivity(), mCursor);
+			mPinterestUI.createLayout();
+			mScrollView.removeAllViews();
+			mScrollView.addView(mPinterestUI);
+
+			emptyMoves.setVisibility(View.GONE);
+		} else {
 
 			emptyMoves.setVisibility(View.VISIBLE);
-			nextmoveIcon	=	(ImageView) emptyMoves.findViewById(R.id.nextmoveIcon);
+			nextmoveIcon = (ImageView) emptyMoves
+					.findViewById(R.id.nextmoveIcon);
 			nextmoveIcon.setOnClickListener(new View.OnClickListener() {
-				
+
 				@Override
 				public void onClick(View v) {
 
@@ -78,100 +76,84 @@ public class HomeFragment extends BaseFragment implements HTTPResponseListener{
 							CreateNewMoveActivity.class);
 					intent.putExtra("Title", "New Move");
 					startActivity(intent);
-					
+
 				}
 			});
-			
+
 		}
-		
+
 	}
-	
-	
-	public void resetView(){
-		
-		if(mPinterestUI!=null){
+
+	public void resetView() {
+
+		if (mPinterestUI != null) {
 			mScrollView.removeAllViews();
 		}
-		Cursor mCursor	=	new DBManager(getActivity()).fetchMoves();
-		if(mCursor!=null&&mCursor.getCount()>0){
-		
-		mPinterestUI	=	new PinterestUI(getActivity(),mCursor);
-		mPinterestUI.createLayout();
-		mScrollView.addView(mPinterestUI);
-		
+		Cursor mCursor = new DBManager(getActivity()).fetchMoves();
+		if (mCursor != null && mCursor.getCount() > 0) {
+
+			mPinterestUI = new PinterestUI(getActivity(), mCursor);
+			mPinterestUI.createLayout();
+			mScrollView.removeAllViews();
+			mScrollView.addView(mPinterestUI);
+			emptyMoves.setVisibility(View.GONE);
 		}
 	}
-	
-	public void trgrGetmoves(){
+
+	public void trgrGetmoves() {
 		mDialog = new ProgressDialog(getActivity());
 		mDialog.setMessage(getActivity().getString(R.string.getmoves));
 		mDialog.setCancelable(false);
 		mDialog.show();
+		new DBManager(getActivity()).removeMoves();
 		new HttpHandler().getMyMoves(getActivity(), this);
-		
-		
-		
+
 	}
 
-
-
-
 	@Override
-	public void onSuccess() {
+	public void onSuccess(String message) {
 		// TODO Auto-generated method stub
 		dismissDialoge();
-		
-		final Handler mHandler = new Handler(Looper.getMainLooper()) {
 
+		final Handler mHandler = new Handler(Looper.getMainLooper()) {
 
 			public void handleMessage(Message msg) {
 				resetView();
 			}
 		};
 		mHandler.sendEmptyMessage(1);
-		
-		
+
 	}
 
-
-
-
-
 	@Override
-	public void onFailure(final int failureCode,final String message) {
-		
+	public void onFailure(final int failureCode, final String message) {
+
 		dismissDialoge();
 		final Handler mHandler = new Handler(Looper.getMainLooper()) {
 
-
 			public void handleMessage(Message msg) {
 				if (failureCode == HttpHandler.NO_NETWORK_CODE) {
-
 
 					Utils.showNoNetworkAlertDialog(getActivity());
 				} else {
 					showAlertDialog(message);
 
-
 				}
 			}
 		};
-		
-		
-		
+
 		mHandler.sendEmptyMessage(1);
 	}
-	
+
 	/**
 	 * Disimiss Dialog
 	 */
-	
-	private void dismissDialoge(){
+
+	private void dismissDialoge() {
 		if (mDialog != null && mDialog.isShowing())
 			mDialog.dismiss();
 
 	}
-	
 
 	private void showAlertDialog(String messgae) {
 
@@ -198,6 +180,5 @@ public class HomeFragment extends BaseFragment implements HTTPResponseListener{
 		alertDialog.show();
 
 	}
-
 
 }

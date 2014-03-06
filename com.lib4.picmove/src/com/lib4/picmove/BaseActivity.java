@@ -179,7 +179,13 @@ public class BaseActivity extends Activity
 		super.onPostCreate(savedInstanceState);
 		
 		
-		 if (savedInstanceState != null && savedInstanceState.get("CapturePicturesActivity") != null){
+		// mDrawerToggle.syncState(); 
+		
+		 if (savedInstanceState != null && savedInstanceState.get("CapturePicturesActivity") != null
+				 ||savedInstanceState != null && savedInstanceState.get("FitInElevatorActivity") != null
+				 ||savedInstanceState != null && savedInstanceState.get("MoveDetailsActivity") != null
+				 ||savedInstanceState != null && savedInstanceState.get("RequiresDiassemblyActivity") != null
+				 ){
 			 
 		 }
 		 else { mDrawerToggle.syncState(); 

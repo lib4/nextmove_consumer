@@ -1,13 +1,11 @@
 package com.lib4.picmove.fragments;
 
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -19,17 +17,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lib4.customviews.CustomParentView;
 import com.lib4.customviews.IndicatorView;
-
 import com.lib4.picmove.R;
 import com.lib4.picmove.SignInActivity;
-import com.lib4.picmove.SplashActivity;
 
 public class TutorialFragment extends Fragment {
 
@@ -47,7 +43,9 @@ public class TutorialFragment extends Fragment {
 	Handler mHandler = new Handler();
 	private Button gotItButton;
 	Timer mTimerTask;
-	private int[] tutorialIds	=	new int[]{R.drawable.tutorial_1,R.drawable.tutorial_2,R.drawable.tutorial_3};
+	private int[] tutorialIds = new int[] { R.drawable.tutorial_1,
+			R.drawable.tutorial_2, R.drawable.tutorial_3 };
+	TextView mTutorialTextView;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,12 +66,15 @@ public class TutorialFragment extends Fragment {
 		};
 
 		mFrameLayout.setOnTouchListener(gestureListener);
-		
+
 		showTurialPicSlides();
-		AddCustomView(mFrameLayout, 1,false);
+		
+		AddCustomView(mFrameLayout, 1, false);
 		gotItButton = (Button) mRelativeLayout.findViewById(R.id.gotit_btn);
 		gotItButton.setOnClickListener(gotiItBtnClick);
-		//startAnimation(getActivity());
+		mTutorialTextView	=	(TextView) mRelativeLayout.findViewById(R.id.tuttext);
+		setTutorialText(1);
+		 startAnimation(getActivity());
 		return mRelativeLayout;
 	}
 
@@ -88,16 +89,14 @@ public class TutorialFragment extends Fragment {
 				R.drawable.tutorial_number_inactive);
 		mIndicatorView.setNumberofScreens(TOTAL_NUM_SCREENS);
 		mIndicatorView.switchToScreen(CURRENT_SCREEN, CURRENT_SCREEN);
-		
-		
-		
-	
+
 	}
 
-	private void AddCustomView(CustomParentView mFrameLayout,int NextScreen,boolean Anim) {
+	private void AddCustomView(CustomParentView mFrameLayout, int NextScreen,
+			boolean Anim) {
 		ImageView mCustomView = new ImageView(getActivity());
-		mCustomView.setBackgroundResource(tutorialIds[NextScreen-1]);
-		if(!Anim)
+		mCustomView.setBackgroundResource(tutorialIds[NextScreen - 1]);
+		if (!Anim)
 			mFrameLayout.addViewNoAnim(mCustomView);
 		else
 			mFrameLayout.addView(mCustomView);
@@ -106,17 +105,14 @@ public class TutorialFragment extends Fragment {
 	private void RemoveCustomView(CustomParentView mFrameLayout) {
 		int childcount = mFrameLayout.getChildCount();
 		Log.e("child Count", "Get child Count" + childcount);
-		if (childcount > 0){
-		
+		if (childcount > 0) {
+
 			mFrameLayout.removeView(mFrameLayout.getChildAt(childcount - 1));
-		}
-		else {
+		} else {
 			Toast.makeText(getActivity(), "No more views to remove!!",
 					Toast.LENGTH_SHORT).show();
 		}
 	}
-
-
 
 	private OnClickListener gotiItBtnClick = new View.OnClickListener() {
 
@@ -149,8 +145,8 @@ public class TutorialFragment extends Fragment {
 						&& Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
 					// Toast.makeText(getActivity(), "Left Swipe",
 					// Toast.LENGTH_SHORT).show();
-					leftSwipe();
-					
+					leftSwipe(false);
+
 				} else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE
 						&& Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
 					// Toast.makeText(getActivity(), "Right Swipe",
@@ -171,38 +167,50 @@ public class TutorialFragment extends Fragment {
 
 	}
 
-	
-	
-	private void leftSwipe(){
-	
+	private void leftSwipe(boolean fromAutoSlider) {
 
-		Log.e("CURRENT SCREEN"+CURRENT_SCREEN ," NEXT SCREEN ");
+		if(!fromAutoSlider)
+			mTimerTask.cancel();
 		
-		int currentScreen	=	CURRENT_SCREEN;
-		int NextScreen	=	getScreenNumberIncrement();
-		
-		
-		Log.e("CURRENT SCREEN"+CURRENT_SCREEN ," NEXT SCREEN "+NextScreen);
-		mIndicatorView.switchToScreen(currentScreen,NextScreen);
-		if(currentScreen!=NextScreen)
-			AddCustomView(mFrameLayout,NextScreen,true);
-		
+		Log.e("CURRENT SCREEN" + CURRENT_SCREEN, " NEXT SCREEN ");
+
+		int currentScreen = CURRENT_SCREEN;
+		int NextScreen = getScreenNumberIncrement();
+
+		Log.e("CURRENT SCREEN" + CURRENT_SCREEN, " NEXT SCREEN " + NextScreen);
+		mIndicatorView.switchToScreen(currentScreen, NextScreen);
+		setTutorialText(NextScreen);
+		if (currentScreen != NextScreen)
+			AddCustomView(mFrameLayout, NextScreen, true);
+
 	}
-	private void rightSwipe(){
-	
-		
-		
-		int currentScreen	=	CURRENT_SCREEN;
-		int NextScreen	=	getScreenNumberDecrement();
-		
-		
-		mIndicatorView.switchToScreen(currentScreen,
-				NextScreen);
-		
-		if(currentScreen!=NextScreen)
+
+	private void rightSwipe() {
+		mTimerTask.cancel();
+		int currentScreen = CURRENT_SCREEN;
+		int NextScreen = getScreenNumberDecrement();
+
+		mIndicatorView.switchToScreen(currentScreen, NextScreen);
+		setTutorialText(NextScreen);
+		if (currentScreen != NextScreen)
 			RemoveCustomView(mFrameLayout);
 	}
 	
+	private void setTutorialText(int index){
+		
+		switch(index){
+		case 1:
+			mTutorialTextView.setText(getActivity().getResources().getString(R.string.tut1text));
+			break;
+		case 2:
+			mTutorialTextView.setText(getActivity().getResources().getString(R.string.tut2text));
+			break;
+		case 3:
+			mTutorialTextView.setText(getActivity().getResources().getString(R.string.tut3text));
+			break;
+		}
+	}
+
 	private int getScreenNumberIncrement() {
 		if (CURRENT_SCREEN == TOTAL_NUM_SCREENS) {
 			return CURRENT_SCREEN;
@@ -229,7 +237,7 @@ public class TutorialFragment extends Fragment {
 
 	private void startAnimation(Context context) {
 
-		mTimerTask	=	new Timer();
+		mTimerTask = new Timer();
 		mTimerTask.schedule(new UpdateTimeTask(), 2000, 3000);
 	}
 
@@ -239,29 +247,29 @@ public class TutorialFragment extends Fragment {
 
 				@Override
 				public void run() {
-				leftSwipe();
+					leftSwipe(true);
 
 				}
 			});
 		}
 	}
-	
+
 	@Override
-	public void onPause(){
+	public void onPause() {
 		super.onPause();
-		if(mTimerTask!=null){
+		if (mTimerTask != null) {
 			mTimerTask.cancel();
 			mTimerTask.purge();
 		}
-		Log.e("Paused","Paused");
-		
+		Log.e("Paused", "Paused");
+
 	}
-	
+
 	@Override
-	public void onStop(){
+	public void onStop() {
 		super.onStop();
-		Log.e("Stop","Stop");
-		
+		Log.e("Stop", "Stop");
+
 	}
 
 }

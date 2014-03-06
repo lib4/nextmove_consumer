@@ -1,14 +1,11 @@
 package com.lib4.picmove.customui;
 
-import java.util.HashMap;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -29,15 +26,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.appbase.androidquery.AQuery;
-import com.appbase.androidquery.callback.AjaxStatus;
-import com.appbase.androidquery.callback.BitmapAjaxCallback;
 import com.lib4.picmove.ChatActivity;
-import com.lib4.picmove.CreateNewMoveActivity;
 import com.lib4.picmove.MoveDetailsActivity;
 import com.lib4.picmove.ProfileActivity;
 import com.lib4.picmove.R;
-import com.lib4.picmove.entity.ItemProperty;
-import com.lib4.picmove.utils.Utils;
 
 public class PinterestUI extends LinearLayout {
 	private int NUM_COLUMN = 2;
@@ -62,13 +54,7 @@ public class PinterestUI extends LinearLayout {
 		
 		this.context = context;
 		this.mCursor	=	mCursor;
-		if (Utils.TILE_VIEW_PREFERENCE) {// 2 column
-
-			NUM_COLUMN = 2;
-		} else {// 1 column
-			NUM_COLUMN = 1;
-		}
-
+	
 		TOTAL_NUM_ITEMS = mCursor.getCount();
 		setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
 				LayoutParams.FILL_PARENT));
@@ -119,7 +105,7 @@ public class PinterestUI extends LinearLayout {
 			mTextView.setTextColor(getResources().getColor(
 					R.color.blue_text_color));
 			mTextView.setTextSize(25);
-			mTextView.setText("No users found!");
+			mTextView.setText("No Moves found!");
 			mLinearLayout.addView(mTextView);
 			setGravity(Gravity.CENTER);
 
@@ -151,53 +137,78 @@ public class PinterestUI extends LinearLayout {
 
 	private void draw() {
 		if (NextLayout == null) {
+			Log.e("NULL ","NULL LAYOUT ");
 			NextLayout = (LinearLayout) getChildAt(0);
 		}
 
 		LayoutInflater mLayoutInflater = LayoutInflater.from(context);
 		FrameLayout mFrameLayout;
 
-		if (Utils.TILE_VIEW_PREFERENCE) {
-			mFrameLayout = (FrameLayout) mLayoutInflater.inflate(
+		mFrameLayout = (FrameLayout) mLayoutInflater.inflate(
 					R.layout.tiles, null);
-		} else {
-
-			mFrameLayout = (FrameLayout) mLayoutInflater.inflate(R.layout.grid_item,
-					null);
-		}
+		
 
 		
-		ImageView profileImage = (ImageView) mFrameLayout
+		ImageView itemImage = (ImageView) mFrameLayout
 				.findViewById(R.id.itempic);
-		TextView statusTextView = (TextView) mFrameLayout
-				.findViewById(R.id.address);
+		TextView smallBoxCount	=	(TextView) mFrameLayout
+				.findViewById(R.id.boxdetails);
+		
+		TextView mediumBoxCount	=	(TextView) mFrameLayout
+				.findViewById(R.id.mediumboxcount);
+		TextView largeBoxCount	=	(TextView) mFrameLayout
+				.findViewById(R.id.bigboxcount);
+		
+		TextView itemWontFitInBoxCount	=	(TextView) mFrameLayout
+				.findViewById(R.id.itemWontFitInBoxcount);
+		
+		TextView moveFrom	=	(TextView) mFrameLayout
+				.findViewById(R.id.movefrom);
+		TextView moveTo	=	(TextView) mFrameLayout
+				.findViewById(R.id.moveto);
+		
+	
+		
 		
 
 		this.mCursor.moveToPosition(ITEM_DRAWN_INDEX);
+		smallBoxCount.setText(this.mCursor.getString(1));
+		
+		smallBoxCount.setText("Small Box : "+this.mCursor.getString(1)+", Medium Box : "+this.mCursor.getString(2)+", Large Box : "+this.mCursor.getString(3));
+//		mediumBoxCount.setText(this.mCursor.getString(2));
+//		largeBoxCount.setText(this.mCursor.getString(3));
+//		moveFrom.setText(this.mCursor.getString(4));
+//		moveTo.setText(this.mCursor.getString(5));
+//		itemWontFitInBoxCount.setText(""+this.mCursor.getInt(7));
 		
 		
-		AQuery aq = new AQuery(profileImage);
+		
+		
+		AQuery aq = new AQuery(itemImage);
 		Log.e("URL "," I URL "+this.mCursor.getString(6));
-		aq.id(profileImage).image(this.mCursor.getString(6));
+		aq.id(itemImage).image(this.mCursor.getString(6));
 		mFrameLayout.startAnimation(AnimationUtils.loadAnimation(context,
 				R.anim.scale_alpha));
 
+		mFrameLayout.setTag(this.mCursor.getString(0));
 		mFrameLayout.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-			
-				gotoDetails();
+				mCursor.close();
+				gotoDetails((String)v.getTag());
 			}
 		});
+		Log.e("ADDING "," Adding ");
 		NextLayout.addView(mFrameLayout);
 	}
 	
-	private void gotoDetails(){
+	private void gotoDetails(String moveId){
 
 		Intent intent = new Intent(context,
 				MoveDetailsActivity.class);
 		intent.putExtra("Title", "Move Details");
+		intent.putExtra("MoveId", moveId);
 		context.startActivity(intent);
 	}
 

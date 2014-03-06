@@ -1,15 +1,23 @@
 package com.lib4.picmove.fragments;
 
+import java.io.FileInputStream;
+import java.io.StringWriter;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.UUID;
 
+import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,6 +27,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lib4.picmove.CapturePicturesActivity;
 import com.lib4.picmove.FitInElevatorActivity;
@@ -40,6 +49,8 @@ public class CreateNewMoveFragment extends BaseFragment implements HTTPResponseL
 	private int bigitemCount, requiresDiassemblyCount, fitInelevatorCount;
 	
 	Button getQuotesBtn;
+	
+	static ProgressDialog mDialog;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -171,6 +182,11 @@ public class CreateNewMoveFragment extends BaseFragment implements HTTPResponseL
 	
 	
 	private void trgrGeQuotes(){
+		mDialog = new ProgressDialog(getActivity());
+		mDialog.setMessage(getActivity().getString(R.string.sendingmoveinfo));
+		mDialog.setCancelable(false);
+		mDialog.show();
+		
 		
 		JSONObject createMoveReqObject 	=	new JSONObject();
 		
@@ -183,7 +199,7 @@ public class CreateNewMoveFragment extends BaseFragment implements HTTPResponseL
 		createMoveReqObject.put(HttpConstants.DISPATCH_DATE_JKEY,
 				""+Calendar.getInstance().getTime());
 		createMoveReqObject.put(HttpConstants.USERID_JKEY,
-				"38bdceac-1289-4b2c-95b7-9e7572c4dc6c");
+				Utils.userId);
 		createMoveReqObject.put(HttpConstants.SOURCEADDRESS_JKEY, moveFrom.getText().toString());
 		createMoveReqObject.put(HttpConstants.SMALLBOX_COUNT_JKEY, Integer.parseInt(smallBoxCount.getText().toString()));
 		createMoveReqObject.put(HttpConstants.MEDIUMBOX_COUNT_JKEY, Integer.parseInt(mediumBoxCount.getText().toString()));
@@ -201,9 +217,19 @@ public class CreateNewMoveFragment extends BaseFragment implements HTTPResponseL
 				itemObject.put(HttpConstants.ITEM_DESCRIPTION_JKEY,
 						"Item is too old. Need extra care");
 				itemObject.put(HttpConstants.ITEMNAME_JKEY, "Dining Table");
-				itemObject
-						.put(HttpConstants.ITEMIMAGE_JKEY,
-								"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");
+				
+		
+				StringWriter writer = new StringWriter();
+				IOUtils.copy(new FileInputStream(mItemProperty.path), writer);
+				String theString = writer.toString();
+				theString	=	Base64.encodeToString(theString.getBytes(), Base64.DEFAULT);
+				
+				
+				
+				
+				//itemObject
+				//.put(HttpConstants.ITEMIMAGE_JKEY,theString);
+		
 				itemObject.put(HttpConstants.DISASSEMBLY_JKEY, mItemProperty.requiresDiassembly);
 				itemObject.put(HttpConstants.FITIN_ELEVATOR_JKEY, mItemProperty.fitInElevator);
 				itemArray.put(itemObject);
@@ -220,10 +246,32 @@ public class CreateNewMoveFragment extends BaseFragment implements HTTPResponseL
 
 		new HttpHandler().createMove(getActivity(), this, createMoveReqObject);
 	}
+	
+	/**
+	 * Disimiss Dialog
+	 */
+
+	private void dismissDialoge() {
+		if (mDialog != null && mDialog.isShowing())
+			mDialog.dismiss();
+
+	}
+
 
 	@Override
-	public void onSuccess() {
-		// TODO Auto-generated method stub
+	public void onSuccess(final String message) {
+	
+		dismissDialoge();
+
+		final Handler mHandler = new Handler(Looper.getMainLooper()) {
+
+			public void handleMessage(Message msg) {
+				Toast.makeText(getActivity(), message, 1000).show();
+				getActivity().finish();
+			}
+		};
+		mHandler.sendEmptyMessage(1);
+		
 		
 	}
 

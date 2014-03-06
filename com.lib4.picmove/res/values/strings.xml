@@ -36,11 +36,16 @@
     <string name="signin">SignIn...</string>
     <string name="signup">SignUp...</string>
     <string name="getmoves">Getting Moves...</string>
+    <string name="sendingmoveinfo">Sending your move info...</string>
     <!-- SIGNIN END -->
 
     <string name="logut_alert">Do you really want to logout?</string>
     <string name="snaponlyitem">SNAP ONLY ITEMS THAT DO NOT FIT IN A BOX</string>
     <string name="taphold">TAP AND HOLD THE ITEM TO VIEW THE OPTIONS</string>
-     <string name="tapicon">TAP ON ICON TO CREATE NEW MOVE</string>
+    <string name="tapicon">TAP ON ICON TO CREATE NEW MOVE</string>
+    <string name="okgotit">OK GOT IT!</string>
+    <string name="tut1text">Take snap of your furniture</string>
+    <string name="tut2text">Enter your move info</string>
+    <string name="tut3text">Get and Compare flat-rate quotes from movers and book them!</string>
 
 </resources>

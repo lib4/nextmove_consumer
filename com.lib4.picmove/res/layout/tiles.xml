@@ -30,16 +30,16 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:id="@+id/bigboxtitle"
-                style="@style/text_view_grey"
+                android:id="@+id/boxdetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BigBox" >
+                android:text="SmallBox" >
             </TextView>
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/bigboxcount"
-                style="@style/text_view_grey"
+                style="@style/list_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -51,11 +51,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+              android:visibility="gone" >
 
             <TextView
                 android:id="@+id/mediumboxtitle"
-                style="@style/text_view_grey"
+               style="@style/list_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="MediumBox" >
@@ -63,7 +64,7 @@
 
             <TextView
                 android:id="@+id/mediumboxcount"
-                style="@style/text_view_grey"
+                style="@style/list_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -75,19 +76,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+              android:visibility="gone" >
 
             <TextView
                 android:id="@+id/smallboxtitle"
-                style="@style/text_view_grey"
+                style="@style/list_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BigBox" >
+                android:text="LargeBox" >
             </TextView>
 
             <TextView
                 android:id="@+id/smallboxcount"
-                style="@style/text_view_grey"
+                style="@style/list_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -100,19 +102,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:visibility="gone" >
+              android:visibility="gone"
+            >
 
             <TextView
-                android:id="@+id/itemRequiresDisassemblytitle"
-                style="@style/text_view_grey"
+                android:id="@+id/itemWontFitInBox"
+               style="@style/list_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Disassembly" >
+                android:text="Wont Fit In A Box " >
             </TextView>
 
             <TextView
-                android:id="@+id/Disassemblycount"
-                style="@style/text_view_grey"
+                android:id="@+id/itemWontFitInBoxcount"
+             style="@style/list_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -121,30 +124,9 @@
             </TextView>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:visibility="gone" >
 
-            <TextView
-                android:id="@+id/fitInElevator"
-                style="@style/text_view_grey"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fit It Elevator" >
-            </TextView>
-
-            <TextView
-                android:id="@+id/smallboxcount"
-                style="@style/text_view_grey"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:gravity="right"
-                android:text="100" >
-            </TextView>
-        </LinearLayout>
+        
+        
 
         <ImageView 
             android:layout_width="match_parent"
@@ -152,7 +134,7 @@
             android:background="@drawable/line"/>
         <TextView
             android:id="@+id/movefromtitle"
-            style="@style/blue_text_view"
+           style="@style/blue_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Move From" 
@@ -161,7 +143,6 @@
 
         <TextView
             android:id="@+id/movefrom"
-            style="@style/text_view_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="California Georgia edededededede" >
@@ -177,7 +158,6 @@
 
         <TextView
             android:id="@+id/moveto"
-            style="@style/text_view_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="India bangalore " >
