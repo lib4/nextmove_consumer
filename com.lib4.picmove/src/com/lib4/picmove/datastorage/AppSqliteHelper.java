@@ -37,7 +37,9 @@ public class AppSqliteHelper extends SQLiteOpenHelper {
 	public static final String COLUMN_REJECTREASON = "rejectReason";
 	public static final String COLUMN_DISPATCH_DATE = "dispatchDate";
 	public static final String COLUMN_BIGITEM_PRESENT = "isBigItemsPresent";
-	public static final String COLUMN_ITEMWONTFITBOX_COUNT = "itemWontFitInBox";
+	public static final String COLUMN_ITEMWONTFITBOX_COUNT = "itemsWontFitInBox";
+	public static final String COLUMN_ITEMWONTFITELEVATOR_COUNT = "itemsWontFitInElevator";
+	public static final String COLUMN_ITEMNEEDDISASSEMBLY_COUNT = "itemsRequiresDisassembly";
 	public static final String COLUMN_MOVE_STATUS = "moveStatus";
 	public static final String COLUMN_CONDITIONS = "conditions";
 	public static final String COLUMN_PRICE_QUOTE = "priceQuote";
@@ -78,6 +80,9 @@ public class AppSqliteHelper extends SQLiteOpenHelper {
 			COLUMN_SMALLBOX_COUNT + " int not null default 0, " + 
 			COLUMN_MEDIUMBOX_COUNT + " int not null default 0, " +
 			COLUMN_LARGEBOX_COUNT + " int not null default 0, " + 
+			COLUMN_ITEMWONTFITBOX_COUNT + " int not null default 0, " + 
+			COLUMN_ITEMWONTFITELEVATOR_COUNT + " int not null default 0, " + 
+			COLUMN_ITEMNEEDDISASSEMBLY_COUNT + " int not null default 0, " + 
 			COLUMN_REJECTREASON + " text ," +
 			COLUMN_DISPATCH_DATE + " text ," +
 			COLUMN_BIGITEM_PRESENT + " boolean not null default 0 ," +

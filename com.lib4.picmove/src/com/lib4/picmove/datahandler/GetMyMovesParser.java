@@ -159,13 +159,24 @@ public class GetMyMovesParser {
 							movesValues.put(AppSqliteHelper.COLUMN_MEDIUMBOX_COUNT, jsonParser.getIntValue());
 						}
 						
-						if (HttpConstants.ITEMWONTFITBOX_COUNT_JKEY.equals(token)) {
+						if (HttpConstants.ITEMSWONTFITBOX_COUNT_JKEY.equals(token)) {
 							
 							// get the next token which will be the value...
 							jsonParser.nextToken();
 							movesValues.put(AppSqliteHelper.COLUMN_ITEMWONTFITBOX_COUNT, jsonParser.getIntValue());
 						}
-						
+						if (HttpConstants.ITEMSWONTFITINELEVATOR_COUNT_JKEY.equals(token)) {
+							
+							// get the next token which will be the value...
+							jsonParser.nextToken();
+							movesValues.put(AppSqliteHelper.COLUMN_ITEMWONTFITELEVATOR_COUNT, jsonParser.getIntValue());
+						}
+						if (HttpConstants.ITEMSNEEDDISASSEMBLY_COUNT_JKEY.equals(token)) {
+							
+							// get the next token which will be the value...
+							jsonParser.nextToken();
+							movesValues.put(AppSqliteHelper.COLUMN_ITEMNEEDDISASSEMBLY_COUNT, jsonParser.getIntValue());
+						}
 		
 						if (HttpConstants.BIGITEMS_JKEY.equals(token)) {
 		

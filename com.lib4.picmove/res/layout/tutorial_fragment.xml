@@ -24,7 +24,7 @@
         android:paddingBottom="30dp" >
 
         <TextView
-              style="@style/btn"
+            style="@style/btn"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@color/tranparentolor"
